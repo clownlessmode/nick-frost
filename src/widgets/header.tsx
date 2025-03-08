@@ -1,6 +1,5 @@
 import ContactButton from "@features/contact-button";
 import ProgressButtons from "@features/progress-buttons";
-import { Button } from "@shared/ui/button";
 import Image from "next/image";
 import React, { FC } from "react";
 
