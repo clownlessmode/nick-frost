@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React, { FC } from "react";
 
 const ImageBox: FC<{ imageSrc: string }> = ({ imageSrc }) => {
