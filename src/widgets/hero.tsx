@@ -4,7 +4,7 @@ import React, { FC } from "react";
 const Hero: FC = () => {
   return (
     <div className=" max-w-screen z-30 px-5 relative gap-5 flex flex-col justify-center items-center">
-      <h1 className="bg-gradient-to-r from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-5xl font-semibold leading-none tracking-tight text-center uppercase">
+      <h1 className="bg-gradient-to-r text-nowrap from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-5xl font-semibold leading-none tracking-tight text-center uppercase">
         SCALE YOUR <br />
         HIGH-TICKET <br />
         OFFER 24/7
