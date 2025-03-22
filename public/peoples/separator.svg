@@ -2,9 +2,9 @@
 <path d="M1 20L1 -7.45058e-07" stroke="url(#paint0_linear_289_4419)"/>
 <defs>
 <linearGradient id="paint0_linear_289_4419" x1="8.44647e-07" y1="-0.0561792" x2="4.12116" y2="0.623169" gradientUnits="userSpaceOnUse">
-<stop stop-color="white" stop-opacity="0"/>
-<stop offset="0.455" stop-color="white"/>
-<stop offset="1" stop-color="white" stop-opacity="0"/>
+<stop stopColor="white" stopOpacity="0"/>
+<stop offset="0.455" stopColor="white"/>
+<stop offset="1" stopColor="white" stopOpacity="0"/>
 </linearGradient>
 </defs>
 </svg>

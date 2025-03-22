@@ -1,7 +1,7 @@
 <svg width="206" height="211" viewBox="0 0 206 211" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1 0.5V164.862C1 172.394 7.10613 178.5 14.6384 178.5H103" stroke="url(#paint0_linear_346_598)" stroke-width="0.454614"/>
-<path d="M205 0.5V164.862C205 172.394 198.894 178.5 191.362 178.5H103" stroke="url(#paint1_linear_346_598)" stroke-width="0.454614"/>
-<path d="M103 147L103 211" stroke="url(#paint2_linear_346_598)" stroke-width="0.454614"/>
+<path d="M1 0.5V164.862C1 172.394 7.10613 178.5 14.6384 178.5H103" stroke="url(#paint0_linear_346_598)" strokeWidth="0.454614"/>
+<path d="M205 0.5V164.862C205 172.394 198.894 178.5 191.362 178.5H103" stroke="url(#paint1_linear_346_598)" strokeWidth="0.454614"/>
+<path d="M103 147L103 211" stroke="url(#paint2_linear_346_598)" strokeWidth="0.454614"/>
 <g filter="url(#filter0_d_346_598)">
 <rect width="4.16951" height="4.25964" transform="matrix(0.753032 0.657984 -0.753032 0.657984 103.208 176)" fill="white"/>
 </g>
@@ -18,19 +18,19 @@
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_346_598" result="shape"/>
 </filter>
 <linearGradient id="paint0_linear_346_598" x1="103" y1="179" x2="8.50081" y2="0.470247" gradientUnits="userSpaceOnUse">
-<stop stop-color="white" stop-opacity="0"/>
-<stop offset="0.455" stop-color="white"/>
-<stop offset="1" stop-color="white" stop-opacity="0"/>
+<stop stopColor="white" stopOpacity="0"/>
+<stop offset="0.455" stopColor="white"/>
+<stop offset="1" stopColor="white" stopOpacity="0"/>
 </linearGradient>
 <linearGradient id="paint1_linear_346_598" x1="103" y1="179" x2="197.499" y2="0.470247" gradientUnits="userSpaceOnUse">
-<stop stop-color="white" stop-opacity="0"/>
-<stop offset="0.455" stop-color="white"/>
-<stop offset="1" stop-color="white" stop-opacity="0"/>
+<stop stopColor="white" stopOpacity="0"/>
+<stop offset="0.455" stopColor="white"/>
+<stop offset="1" stopColor="white" stopOpacity="0"/>
 </linearGradient>
 <linearGradient id="paint2_linear_346_598" x1="104" y1="211.18" x2="99.7781" y2="210.962" gradientUnits="userSpaceOnUse">
-<stop stop-color="white" stop-opacity="0"/>
-<stop offset="0.455" stop-color="white"/>
-<stop offset="1" stop-color="white" stop-opacity="0"/>
+<stop stopColor="white" stopOpacity="0"/>
+<stop offset="0.455" stopColor="white"/>
+<stop offset="1" stopColor="white" stopOpacity="0"/>
 </linearGradient>
 </defs>
 </svg>

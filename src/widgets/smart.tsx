@@ -32,15 +32,6 @@ const Smart: FC = () => {
 
   return (
     <div className="mt-[80px]" ref={containerRef}>
-      <h1 className="max-w-[175px] bg-gradient-to-r text-left from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-4xl font-medium leading-none tracking-tight uppercase">
-        THERE ARE 2 WAYS TO
-      </h1>
-      <h1 className="mt-2 text-right leading-[42px] bg-gradient-to-r from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-4xl font-medium tracking-tight uppercase">
-        <span className="text-background bg-white px-2 py-px rounded-xl">
-          SCALE
-        </span>{" "}
-        YOUR HIGH TICKET OFFER
-      </h1>
       <div className="w-full relative mt-[28px]">
         <motion.h1
           style={{ y: mainStreamY }}
