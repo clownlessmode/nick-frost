@@ -1,8 +1,9 @@
 import React from "react";
 
-const Instagram = () => {
+const Instagram = ({ className }: { className?: string }) => {
   return (
     <svg
+      className={className}
       width="13"
       height="12"
       viewBox="0 0 13 12"

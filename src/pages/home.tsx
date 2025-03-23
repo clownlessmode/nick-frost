@@ -16,11 +16,11 @@ const HomePage: FC = () => {
       <Hero />
       <Video />
       <Peoples />
-      <Mainstream />
-      <Smart />*/}
+      <Mainstream />*/}
+      <Smart />
       <Hexagons />
       <Events />
-      {/* <Models /> */}
+      <Models />
       <Formula />
       <div className="mt-[1000px]">s</div>
     </div>
