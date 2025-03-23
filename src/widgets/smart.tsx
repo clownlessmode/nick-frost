@@ -41,13 +41,13 @@ const Smart: FC = () => {
       <div className="w-full relative mt-[28px]">
         <motion.h1
           style={{ y: mainStreamY }}
-          className="w-full absolute z-[-1] -top-8 translate-x-[-3ççpx] text-center text-[97.5px] sm:text-[200px] md:text-[227px] lg:text-[300px] 2xl:text-[511px] mx-auto tracking-tight leading-none text-white [text-shadow:_0_0_8.05px_rgba(255,255,255,0.3)]"
+          className="w-full absolute z-[-1] -top-8 translate-x-[-25px] text-center text-[97.5px] sm:text-[200px] md:text-[227px] lg:text-[300px] 2xl:text-[511px] mx-auto tracking-tight leading-none text-white [text-shadow:_0_0_8.05px_rgba(255,255,255,0.3)]"
         >
           SMART
         </motion.h1>
         <div>
           <div
-            className="w-full md:grid md:grid-cols-2 md:grid-rows-2 mw shadow-[0_0_30px_rgba(62,213,178,0.2)] border-[0.5px] backdrop-blur-xs border-white/40 rounded-[15px] flex-col bg-[rgba(0,0,0,0.1)] bg-no-repeat bg-cover px-[24px] py-[25px] flex gap-5"
+            className="sm:p-[35px] w-full md:grid md:grid-cols-2 md:grid-rows-2 mw2 shadow-[0_0_30px_rgba(62,213,178,0.2)] border-[0.5px] backdrop-blur-xs border-white/40 rounded-[15px] flex-col bg-[rgba(0,0,0,0.1)] bg-no-repeat bg-cover p-[25px] flex gap-5 sm:gap-[25px] md:gap-[40px] lg:gap-[50px] 2xl:gap-[70px]"
             style={{ backgroundImage: `url("/background/smart.png")` }}
           >
             <div className="flex justify-between w-full  lg:col-span-1 text-[10px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]">

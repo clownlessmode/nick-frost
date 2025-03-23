@@ -1,8 +1,8 @@
-import Header from "@widgets/header";
+// import Header from "@widgets/header";
 import Hero from "@widgets/hero";
 import Hexagons from "@widgets/hexagons";
 import Mainstream from "@widgets/mainstream";
-import Peoples from "@widgets/peoples";
+// import Peoples from "@widgets/peoples";
 import Smart from "@widgets/smart";
 import Video from "@widgets/video";
 import React, { FC } from "react";
@@ -12,11 +12,11 @@ import Formula from "@widgets/formula";
 const HomePage: FC = () => {
   return (
     <div className="w-full">
-      {/* <Header />
+      {/* <Header /> */}
       <Hero />
       <Video />
-      <Peoples />
-      <Mainstream />*/}
+      {/* <Peoples /> */}
+      <Mainstream />
       <Smart />
       <Hexagons />
       <Events />

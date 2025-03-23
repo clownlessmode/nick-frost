@@ -10,12 +10,18 @@ interface ImageBoxProps {
 
 const ImageBox: FC<ImageBoxProps> = ({ imageSrc }) => {
   return (
-    <div className="border border-white relative size-[65px] shrink-0 h-[65px] flex justify-center items-center">
+    <div className="border border-white relative size-[65px] sm:size-[148px] md:size-[70px] lg:size-[94px] 2xl:size-[148px] shrink-0 flex justify-center items-center">
       <div className="absolute -top-[1.5px] -left-[2px] w-[4px] h-[4px] bg-white"></div>
       <div className="absolute -top-[1.5px] -right-[2px] w-[4px] h-[4px] bg-white"></div>
       <div className="absolute -bottom-[2px] -left-[2px] w-[4px] h-[4px] bg-white"></div>
       <div className="absolute -bottom-[2px] -right-[2px] w-[4px] h-[4px] bg-white"></div>
-      <Image alt="" src={imageSrc} width={64} height={64} />
+      <Image
+        alt=""
+        src={imageSrc}
+        width={500}
+        height={500}
+        className="aspect-square size-full"
+      />
     </div>
   );
 };
@@ -33,37 +39,29 @@ const Mainstream: FC = () => {
 
   return (
     <div className="mt-[80px]" ref={containerRef}>
-      <h1 className="max-w-[175px] bg-gradient-to-r text-left from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-4xl font-medium leading-none tracking-tight uppercase">
-        THERE ARE 2 WAYS TO
-      </h1>
-      <h1 className="mt-2 text-right leading-[42px] bg-gradient-to-r from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-4xl font-medium tracking-tight uppercase">
-        <span className="text-background bg-white px-2 py-px rounded-xl">
-          SCALE
-        </span>{" "}
-        YOUR HIGH TICKET OFFER
-      </h1>
-      <div className="w-full relative mt-[28px]">
+      <div className="w-full relative mt-[28px] ">
         <motion.h1
           style={{ y: mainStreamY }}
-          className="w-full absolute -left-[24px] -top-8 text-[17vw] text-center tracking-tight leading-none"
+          className="w-full absolute z-[-1] -top-8 translate-x-[-25px] text-center text-[54px] sm:text-[105px] md:text-[120px] lg:text-[158px] 2xl:text-[263px] mx-auto tracking-tight leading-none text-white [text-shadow:_0_0_8.05px_rgba(255,255,255,0.3)]"
         >
           MAINSTREAM
         </motion.h1>
         <div>
-          <div className="w-full rounded-[15px] flex-col bg-transparent backdrop-blur-xs px-[24px] py-[25px] flex gap-5">
-            <div className="flex justify-between w-full">
-              <div className="flex flex-col justify-between h-[65px]">
-                <p className="uppercase text-[10px] font-medium">COMMUNITIES</p>
-                <p className="uppercase text-[10px] font-extralight max-w-[130px]">
+          <div className="w-full leading-none md:grid md:grid-cols-2 md:grid-rows-2 mw2 border-[0.5px] backdrop-blur-xs border-white/40 rounded-[15px] flex-col bg-[rgba(0,0,0,0.1)] bg-no-repeat bg-cover px-[24px] py-[25px] flex gap-5 sm:gap-[25px] md:gap-[40px] lg:gap-[50px] 2xl:gap-[70px]">
+            <div className="flex justify-between w-full  lg:col-span-1 text-[10px] h-full sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]">
+              <div className="py-2 flex flex-col leading-none justify-between items-start h-[65px] sm:h-[148px] md:h-[70px] lg:h-[94px] 2xl:h-[148px]">
+                <p className="uppercase font-medium">Communities</p>
+                <p className="uppercase font-light max-w-[130px] sm:max-w-[310px] md:max-w-2/3 w-full">
                   require constant work and attention
                 </p>
               </div>
               <ImageBox imageSrc="/mainstream/communities.png" />
             </div>
-            <div className="flex justify-between w-full">
-              <div className="flex flex-col justify-between h-[65px]">
-                <p className="uppercase text-[10px] font-medium">WEBINARS</p>
-                <p className="uppercase text-[10px] font-extralight max-w-[100px]">
+            <div className="flex justify-between w-full items-center md:h-full  lg:col-span-1 text-[10px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]">
+              <div className="py-2 flex flex-col leading-none justify-between items-start h-[65px] sm:h-[148px] md:h-[70px] lg:h-[94px] 2xl:h-[148px]">
+                <p className="uppercase font-medium">Webinars</p>
+
+                <p className="uppercase font-light max-w-[130px] sm:max-w-[310px] md:max-w-2/3 w-full">
                   <span className="font-medium">
                     not enough time or information
                   </span>{" "}
@@ -72,20 +70,20 @@ const Mainstream: FC = () => {
               </div>
               <ImageBox imageSrc="/mainstream/webinars.png" />
             </div>
-            <div className="flex justify-between w-full items-center">
-              <div className="flex flex-col justify-between items-center ">
-                <p className="uppercase text-[10px] font-extralight max-w-[144px]">
-                  don&apos;t filter the right audience which leads to{" "}
-                  <span className="font-medium"> low engagement and sales</span>
+            <div className="flex justify-between w-full  lg:col-span-1 items-center text-[10px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]">
+              <div className="py-2 flex flex-col leading-none justify-between items-start h-[65px] sm:h-[148px] md:h-[70px] lg:h-[94px] 2xl:h-[148px]">
+                <p className="uppercase font-light max-w-[130px] sm:max-w-[310px] md:max-w-2/3 w-full">
+                  don’t filter the right audience which leads to{" "}
+                  <span className="font-medium">low engagement and sales </span>
                 </p>
               </div>
               <ImageBox imageSrc="/mainstream/filter.png" />
             </div>
-            <div className="flex justify-between w-full items-center">
-              <div className="flex flex-col justify-between items-center ">
-                <p className="uppercase text-[10px] font-extralight max-w-[134px]">
+            <div className="flex justify-between w-full  lg:col-span-1 items-center text-[10px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]">
+              <div className="py-2 flex flex-col leading-none justify-between items-start h-[65px] sm:h-[148px] md:h-[70px] lg:h-[94px] 2xl:h-[148px]">
+                <p className="uppercase font-light max-w-[130px] sm:max-w-[310px] md:max-w-2/3 w-full">
                   <span className="font-medium">
-                    &quot;sales over value&quot; approach
+                    “sales over value” approach
                   </span>{" "}
                   which affects your personal brand in the long term
                 </p>

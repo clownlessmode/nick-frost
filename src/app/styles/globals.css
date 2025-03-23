@@ -123,9 +123,34 @@
   }
 }
 
+.mw2 {
+  max-width: 280px;
+  margin: 0 auto;
+}
 
+@media (min-width: 640px) {
+  .mw2 {
+    max-width: 600px;
+  }
+}
 
+@media (min-width: 768px) {
+  .mw2 {
+    max-width: 688px;
+  }
+}
 
+@media (min-width: 1024px) {
+  .mw2 {
+    max-width: 944px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .mw2 {
+    max-width: 1456px;
+  }
+}
 
 .noise-bg {
   position: relative;
