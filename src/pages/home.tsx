@@ -8,18 +8,20 @@ import Video from "@widgets/video";
 import React, { FC } from "react";
 import Events from "@widgets/events";
 import Models from "@widgets/models";
+import Formula from "@widgets/formula";
 const HomePage: FC = () => {
   return (
     <div className="w-full">
-      <Header />
+      {/* <Header />
       <Hero />
       <Video />
       <Peoples />
       <Mainstream />
-      <Smart />
+      <Smart />*/}
       <Hexagons />
       <Events />
-      <Models />
+      {/* <Models /> */}
+      <Formula />
       <div className="mt-[1000px]">s</div>
     </div>
   );

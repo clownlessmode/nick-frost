@@ -94,6 +94,39 @@
   /* font-family: var(--font-sf-pro-display); */
 }
 
+.mw {
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .mw {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 768px) {
+  .mw {
+    max-width: 728px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mw {
+    max-width: 984px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .mw {
+    max-width: 1496px;
+  }
+}
+
+
+
+
+
 .noise-bg {
   position: relative;
   inset: 1px;
