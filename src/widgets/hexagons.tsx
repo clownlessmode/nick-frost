@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { FC } from "react";
 
 const ImageBox: FC<{ imageSrc: string }> = ({ imageSrc }) => {
@@ -20,10 +21,11 @@ const ImageBox: FC<{ imageSrc: string }> = ({ imageSrc }) => {
         {/* Изображение, обрезанное по форме шестиугольника */}
         <image
           href={imageSrc}
-          width="140"
-          height="161"
+          width="900"
+          height="900"
           preserveAspectRatio="xMidYMid slice"
           clipPath="url(#hexagonMask)"
+          className="w-[140px] h-[161px] object-cover scale-100"
         />
 
         {/* Белая обводка шестиугольника */}
@@ -39,7 +41,16 @@ const ImageBox: FC<{ imageSrc: string }> = ({ imageSrc }) => {
 
 const Hexagons: FC = () => {
   return (
-    <div className="mt-[80px]">
+    <div className="mt-[80px] relative">
+      <div className="absolute inset-0 z-[-1] shrink-0 blur-[60px] opacity-15">
+        <Image
+          alt="hero-splash"
+          src={"/background/hero-splash.svg"}
+          width={1050}
+          height={212}
+          className="w-full h-full object-cover scale-100 "
+        />
+      </div>
       <h1 className="sm:mb-[40px]! md:mb-[20px]! lg:mb-[80px]! 2xl:mb-[140px]! max-w-[280px] sm:max-w-[600px] mx-auto md:text-center md:max-w-[460px] lg:max-w-[620px] 2xl:max-w-[905px] justify-between  md:flex w-full sm:text-[66px] md:text-[30px] lg:text-[41px] 2xl:text-[60px] bg-gradient-to-r text-left from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-[32px] font-medium leading-none tracking-tight uppercase">
         PEOPLE YOU MAY KNOW WITH MULTI-DAY EVENT CAMPAIGNS
       </h1>

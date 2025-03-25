@@ -62,7 +62,7 @@ const CardV2 = () => {
 
 const Events: FC = () => {
   return (
-    <div className="mt-[80px] ">
+    <div className="mt-[80px] relative">
       <div className="w-full flex flex-col space-y-[-5px] mw">
         <div className="mw justify-between md:flex w-full hidden sm:text-[66px] md:text-[52px] lg:text-[72px] 2xl:text-[144px] bg-gradient-to-r text-center from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-[32px] font-medium leading-none tracking-tight uppercase">
           <h1>EVERGREEN</h1>
@@ -113,6 +113,15 @@ So your time and resources can be redirected towards your product and your custo
             <CardV2 />
           </div>
         </div>
+      </div>
+      <div className="absolute inset-0 z-[-1] shrink-0 blur-[60px] flex justify-center items-center">
+        <Image
+          alt="hero-splash"
+          src={"/background/hero-splash.svg"}
+          width={1050}
+          height={212}
+          className="w-full h-2/3 object-cover scale-110"
+        />
       </div>
     </div>
   );

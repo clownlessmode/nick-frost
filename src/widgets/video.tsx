@@ -4,7 +4,7 @@ import React, { FC } from "react";
 
 const Video: FC = () => {
   return (
-    <div className="mt-5! sm:mt-[48px]! md:mt-4! lg:mt-[24px]! 2xl:mt-[38px]! relative mw">
+    <div className="mt-5! sm:mt-[48px]! md:mt-4! lg:mt-[24px]! 2xl:mt-[38px]! relative  mw">
       <video
         className="rounded-[19px] overflow-hidden w-full object-cover p-0 mw"
         poster="/background/video-poster.png"
