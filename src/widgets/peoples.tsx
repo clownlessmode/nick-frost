@@ -31,8 +31,8 @@ const Peoples: FC = () => {
         EVERYONE <br />
       </h1>
       <h1 className="hidden md:block bg-gradient-to-r from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-4xl font-medium leading-none tracking-tight text-center uppercase text-[32px] sm:text-[66px] md:text-[52px] lg:text-[72px] 2xl:text-[122px] relative -z-10 mb-[-70px]">
-    THIS IS NOT FOR EVERYONE <br />
-  </h1>
+        THIS IS NOT FOR EVERYONE <br />
+      </h1>
 
       {/* Мобильная версия - видима только до md */}
       <div className="mt-5 relative md:hidden">
@@ -60,37 +60,39 @@ const Peoples: FC = () => {
 
       {/* Десктопная версия - видима только от md и выше */}
       <div className="md:mt-14 lg:mt-13 2xl:mt-10 relative hidden md:block">
-    <div className="flex justify-center items-center gap-6 lg:gap-10 relative">
-      <PeopleCard src={"/peoples/creators.png"} text="TOP TIER CREATORS" />
+        <div className="flex justify-center items-center gap-6 lg:gap-10 relative">
+          <PeopleCard src={"/peoples/creators.png"} text="TOP TIER CREATORS" />
 
-      <div className="relative">
-        <PeopleCard
-          text="COACHES & CONSULTANTS"
-          src={"/peoples/coachers.png"}
-        />
+          <div className="relative">
+            <PeopleCard
+              text="COACHES & CONSULTANTS"
+              src={"/peoples/coachers.png"}
+            />
+          </div>
+
+          <PeopleCard src={"/peoples/founders.png"} text="FOUNDERS" />
+        </div>
+
+        {/* Изображение borderpc перемещено между картами и кнопками */}
+        <div className="flex justify-center mt-2">
+          <Image
+            className=""
+            alt="border"
+            src={"/peoples/borderpc.svg"}
+            width={600}
+            height={600}
+          />
+        </div>
+
+        <div className="-top-12 bg-black z-[-1] w-1/2 left-1/2 -translate-x-1/2 blur-2xl h-[150%] absolute rounded-[50%]"></div>
       </div>
-
-      <PeopleCard src={"/peoples/founders.png"} text="FOUNDERS" />
-    </div>
-
-    {/* Изображение borderpc перемещено между картами и кнопками */}
-    <div className="flex justify-center mt-2">
-      <Image
-        className=""
-        alt="border"
-        src={"/peoples/borderpc.svg"}
-        width={600}
-        height={600}
-      />
-    </div>
-
-    <div className="-top-12 bg-black z-[-1] w-1/2 left-1/2 -translate-x-1/2 blur-2xl h-[150%] absolute rounded-[50%]"></div>
-  </div>
 
       {/* Мобильная версия кнопок - в столбец */}
       <div className="w-full font-extralight flex flex-col items-center mt-[60px] md:hidden">
         <Button className="w-full shadow-[0_15px_20px_rgba(255,255,255,0.05)] relative bg-transparent border h-[48px] border-white/10 overflow-hidden group">
-          <span className="relative z-10">Simple Systems that 'Just Work'</span>
+          <span className="relative z-10">
+            Simple Systems that &apos;Just Work&apos;
+          </span>
           <div className="absolute inset-0 bg-gradient-to-l from-white/7 to-white/2"></div>
           <div className="absolute inset-0 backdrop-blur-[13.54px]"></div>
           <div className="absolute -inset-[0.45px] shadow-[0px_10.91px_24.28px_0.45px_rgba(255,255,255,0.05)] rounded-inherit"></div>
@@ -128,7 +130,7 @@ const Peoples: FC = () => {
       <div className=" grid-cols-3 gap-4 lg:gap-6 mt-2 hidden md:grid max-w-[1520px] mx-auto">
         <Button className="shadow-[0_15px_20px_rgba(255,255,255,0.05)] relative bg-transparent border h-[48px] 2xl:h-[100px] border-white/10 overflow-hidden group">
           <span className="relative z-10 md:text-[8px] lg:text-[12px] 2xl:text-[18px]">
-            Simple Systems that 'Just Work'
+            Simple Systems that &apos;Just Work&apos;
           </span>
           <div className="absolute inset-0 bg-gradient-to-l from-white/7 to-white/2"></div>
           <div className="absolute inset-0 backdrop-blur-[13.54px]"></div>
@@ -145,7 +147,9 @@ const Peoples: FC = () => {
         </Button>
 
         <Button className="shadow-[0_15px_20px_rgba(255,255,255,0.05)] relative bg-transparent border h-[48px] 2xl:h-[100px] border-white/10 overflow-hidden group">
-          <span className="relative z-10 md:text-[8px] lg:text-[12px] 2xl:text-[18px]">Quality at scale</span>
+          <span className="relative z-10 md:text-[8px] lg:text-[12px] 2xl:text-[18px]">
+            Quality at scale
+          </span>
           <div className="absolute inset-0 bg-gradient-to-l from-white/7 to-white/2"></div>
           <div className="absolute inset-0 backdrop-blur-[13.54px]"></div>
           <div className="absolute -inset-[0.45px] shadow-[0px_10.91px_24.28px_0.45px_rgba(255,255,255,0.05)] rounded-inherit"></div>
