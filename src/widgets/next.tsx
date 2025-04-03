@@ -30,7 +30,7 @@ const Next: FC = () => {
   };
   return (
     <div className="relative mt-[100px] sm:mt-[160px] md:mt-[110px] lg:mt-[130px] 2xl:mt-[168px] 3xl:mt-[100px] w-full overflow-hidden">
-  <motion.div className="mx-auto max-w-[267px] sm:max-w-[573px] md:max-w-[420px] lg:max-w-[840px] relative" ref={ref} initial="hidden"
+  <motion.div className="mx-auto max-w-[267px] sm:max-w-[573px] md:max-w-[420px] lg:max-w-[480px] 2xl:max-w-[840px] relative mt-[50px]" ref={ref} initial="hidden"
     animate={controls}
     variants={zoomVariants}>
     <div className="flex flex-col gap-[18px] sm:gap-[37px] md:gap-[24px] lg:gap-[30px] 2xl:gap-[65px] px-[20px] py-[25px] sm:px-[42px] sm:py-[56px] md:px-[44px] md:py-[56px] lg:px-[53px] lg:py-[57px] 2xl:px-[102px] 2xl:py-[109px] border border-white/20 rounded-[12px] sm:rounded-[19px] md:rounded-[12px] lg:rounded-[14px] 2xl:rounded-[28px] backdrop-blur-md">

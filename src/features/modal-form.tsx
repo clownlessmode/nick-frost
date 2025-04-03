@@ -162,7 +162,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
               {...register("firstName", { required: "First name is required" })}
               onChange={handleChange}
               placeholder="FIRST NAME"
-              className="bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+              className="bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
             />
             {errors.firstName && (
               <span className="text-red-500 text-sm">
@@ -176,7 +176,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
               {...register("lastName", { required: "Last name is required" })}
               onChange={handleChange}
               placeholder="LAST NAME"
-              className="bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+              className="bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
             />
             {errors.lastName && (
               <span className="text-red-500 text-sm">
@@ -207,7 +207,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
               })}
               onChange={handleChange}
               placeholder="Enter text"
-              className="w-full p-2 bg-transparent border border-[#FFFFFF] h-[80px] rounded-[8px] sm:h-[180px] sm:rounded-[12px] md:h-[100px] md:rounded-[8px] lg:h-[150px] lg:rounded-[12px] 2xl:h-[200px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+              className="w-full p-2 bg-transparent border border-[#FFFFFF] h-[80px] rounded-[8px] sm:h-[180px] sm:rounded-[12px] md:h-[100px] md:rounded-[8px] lg:h-[150px] lg:rounded-[12px] 2xl:h-[200px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
             />
             {errors.description && (
               <span className="text-red-500 text-sm">
@@ -230,10 +230,23 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
               type="text"
               {...register("additionalField", {
                 required: "Price is required",
+                pattern: {
+                  value: /^[0-9]+(\.[0-9]{1,2})?$/,
+                  message: "Please enter a valid number",
+                },
               })}
-              onChange={handleChange}
+              onChange={(e) => {
+                // Разрешаем только числа и точку для десятичных
+                const value = e.target.value.replace(/[^0-9.]/g, "");
+                const dotCount = (value.match(/\./g) || []).length;
+                if (dotCount > 1) {
+                  return;
+                }
+                e.target.value = value;
+                handleChange(e);
+              }}
               placeholder="10.000$"
-              className="bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+              className="bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px] pr-[70px]"
             />
             {errors.additionalField && (
               <span className="text-red-500 text-sm">
@@ -242,22 +255,28 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
             )}
           </div>
         );
-        case 4:
-          return (
-            <div className="flex items-center flex-col gap-[30px] w-full">
-              <label className="text-center uppercase text-[21px] leading-[25px] sm:text-[42px] sm:leading-[44px] md:text-[21px] md:leading-[25px] lg:text-[32px] lg:leading-[34px] 2xl:text-[50px] 2xl:leading-[54px]">
-                <span className="block max-w-[150px] sm:max-w-[300px] md:max-w-[200px] lg:max-w-[300px] 2xl:max-w-[480px] mx-auto">
-                  How do you currently get clients?
-                </span>
-              </label>
-              <div className="grid grid-cols-2 gap-3 w-full">
-                {["COLD OUTREACH", "E-MAIL MARKETING", "PAID ADS", "RECOMMENDATIONS", "CONTENT MARKETING", "OTHER"].map(
-                  (option) => (
-                    <Button
-                      key={option}
-                      type="button"
-                      variant={formData.option === option ? "default" : "outline"}
-                      className={`w-full h-[32px] rounded-[8px] 
+      case 4:
+        return (
+          <div className="flex items-center flex-col gap-[30px] w-full">
+            <label className="text-center uppercase text-[21px] leading-[25px] sm:text-[42px] sm:leading-[44px] md:text-[21px] md:leading-[25px] lg:text-[32px] lg:leading-[34px] 2xl:text-[50px] 2xl:leading-[54px]">
+              <span className="block max-w-[150px] sm:max-w-[300px] md:max-w-[200px] lg:max-w-[300px] 2xl:max-w-[480px] mx-auto">
+                How do you currently get clients?
+              </span>
+            </label>
+            <div className="grid grid-cols-2 gap-3 w-full">
+              {[
+                "COLD OUTREACH",
+                "E-MAIL MARKETING",
+                "PAID ADS",
+                "RECOMMENDATIONS",
+                "CONTENT MARKETING",
+                "OTHER",
+              ].map((option) => (
+                <Button
+                  key={option}
+                  type="button"
+                  variant={formData.option === option ? "default" : "outline"}
+                  className={`w-full h-[32px] rounded-[8px] 
                       sm:h-[48px] sm:rounded-[12px] 
                       md:h-[32px] md:rounded-[8px] 
                       lg:h-[44px] lg:rounded-[12px] 
@@ -269,16 +288,19 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                           ? "bg-white text-black"
                           : "bg-transparent text-white border"
                       }`}
-                      onClick={() => handleOptionSelect(option)}
-                    >
-                      {option}
-                    </Button>
-                  )
-                )}
-              </div>
-              {errors.option && <span className="text-red-500 text-sm">{errors.option.message}</span>}
+                  onClick={() => handleOptionSelect(option)}
+                >
+                  {option}
+                </Button>
+              ))}
             </div>
-          );
+            {errors.option && (
+              <span className="text-red-500 text-sm">
+                {errors.option.message}
+              </span>
+            )}
+          </div>
+        );
       default:
         return null;
     }
@@ -287,9 +309,14 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="secondary" className="font-light h-[28px] text-[10px] sm:h-[58px] sm:text-[20px] md:h-[34px] md:text-[10px] lg:h-[40px] lg:text-[10px] 2xl:h-[74px] 2xl:text-[18px]">{triggerText}</Button>
+        <Button
+          variant="secondary"
+          className="font-light h-[28px] text-[10px] sm:h-[58px] sm:text-[20px] md:h-[34px] md:text-[10px] lg:h-[40px] lg:text-[10px] 2xl:h-[74px] 2xl:text-[18px]"
+        >
+          {triggerText}
+        </Button>
       </DialogTrigger>
-      <DialogContent className="flex items-center justify-center flex-col max-w-[280px] h-[335px] sm:max-w-[513px] sm:h-[627px] md:max-w-[300px] md:h-[335px] lg:max-w-[431px] lg:h-[481px] 2xl:max-w-[693px] 2xl:h-[774px] border border-white/20 rounded-[12px] sm:rounded-[19px] md:rounded-[12px] lg:rounded-[14px] 2xl:rounded-[28px] backdrop-blur-md bg-transparent p-4 sm:p-6 md:p-4 lg:p-6 2xl:p-8">
+      <DialogContent className="flex bg-[#1C8F74]/10 items-center justify-center flex-col max-w-[280px] h-[335px] sm:max-w-[513px] sm:h-[627px] md:max-w-[300px] md:h-[335px] lg:max-w-[431px] lg:h-[481px] 2xl:max-w-[693px] 2xl:h-[774px] border border-white/20 rounded-[12px] sm:rounded-[19px] md:rounded-[12px] lg:rounded-[14px] 2xl:rounded-[28px] backdrop-blur-md  p-4 sm:p-6 md:p-4 lg:p-6 2xl:p-8">
         <DialogHeader>
           <DialogTitle className="text-[24px] sm:text-[32px] md:text-[28px] lg:text-[32px] 2xl:text-[48px] uppercase">
             {renderStepIndicator()}
