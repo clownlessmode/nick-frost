@@ -1,9 +1,12 @@
 import Image from "next/image";
 import React, { FC } from "react";
 
-const ImageBox: FC<{ imageSrc: string }> = ({ imageSrc }) => {
+const ImageBox: FC<{ imageSrc: string; coloredImageSrc?: string }> = ({
+  imageSrc,
+  coloredImageSrc,
+}) => {
   return (
-    <div className="relative w-[140px] h-[173px] mt-8 overflow-hidden max-w-[140px] sm:scale-125 md:scale-125 lg:scale-175 2xl:scale-[2.5]">
+    <div className="relative w-[140px] h-[173px] mt-8 overflow-hidden max-w-[140px] sm:scale-125 md:scale-125 lg:scale-175 2xl:scale-[2.5] group">
       <svg
         width="140"
         height="161"
@@ -18,14 +21,24 @@ const ImageBox: FC<{ imageSrc: string }> = ({ imageSrc }) => {
           </clipPath>
         </defs>
 
-        {/* Изображение, обрезанное по форме шестиугольника */}
+        {/* Черно-белое изображение (по умолчанию видимое) */}
         <image
           href={imageSrc}
           width="900"
           height="900"
           preserveAspectRatio="xMidYMid slice"
           clipPath="url(#hexagonMask)"
-          className="w-[140px] h-[161px] object-cover scale-100"
+          className="w-[140px] h-[161px] object-cover scale-100 opacity-100 transition-opacity duration-300 group-hover:opacity-0"
+        />
+
+        {/* Цветное изображение (по умолчанию скрытое) */}
+        <image
+          href={coloredImageSrc || imageSrc}
+          width="900"
+          height="900"
+          preserveAspectRatio="xMidYMid slice"
+          clipPath="url(#hexagonMask)"
+          className="w-[140px] h-[161px] object-cover scale-100 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         />
 
         {/* Белая обводка шестиугольника */}
@@ -41,7 +54,7 @@ const ImageBox: FC<{ imageSrc: string }> = ({ imageSrc }) => {
 
 const Hexagons: FC = () => {
   return (
-    <div className="mt-[80px] relative">
+    <div className="mt-[100px] sm:mt-[150px] md:mt-[100px] lg:mt-[120px] 2xl:mt-[150px] relative">
       <div className="absolute inset-0 z-[-1] shrink-0 blur-[60px] opacity-15">
         <Image
           alt="hero-splash"
@@ -56,94 +69,97 @@ const Hexagons: FC = () => {
       </h1>
       <div className="flex flex-col justify-center items-center -space-y-[85px] mw w-full sm:hidden">
         <div className="flex flex-row justify-center -space-x-[1px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox
+            imageSrc="/peoples/ppl1.png"
+            coloredImageSrc="/peoples/hexagon1.png"
+          />
+          <ImageBox imageSrc="/peoples/ppl2.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
-        <ImageBox imageSrc="/peoples/hexagon1.png" />
+        <ImageBox imageSrc="/peoples/ppl3.png" coloredImageSrc="/peoples/hexagon1.png"/>
         <div className="flex flex-row justify-center -space-x-[1px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl4.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl5.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
-        <ImageBox imageSrc="/peoples/hexagon1.png" />
+        <ImageBox imageSrc="/peoples/ppl6.png" />
         <div className="flex flex-row justify-center -space-x-[1px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl7.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl8.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
-        <ImageBox imageSrc="/peoples/hexagon1.png" />
+        <ImageBox imageSrc="/peoples/ppl9.png" coloredImageSrc="/peoples/hexagon1.png"/>
       </div>
 
       <div className="hidden flex-col justify-center items-center -space-y-[55px] mw w-full sm:flex md:hidden">
         <div className="flex flex-row justify-center space-x-[33px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl1.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl2.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl3.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
         <div className="flex flex-row justify-center space-x-[33px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl4.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl5.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
         <div className="flex flex-row justify-center space-x-[33px]">
           <div className="w-[140px] h-[173px]" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl6.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl7.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
         <div className="flex flex-row justify-center space-x-[33px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl8.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl9.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
       </div>
 
       <div className="hidden flex-col justify-center items-center -space-y-[55px] mw w-full md:flex lg:hidden">
         <div className="flex flex-row justify-center space-x-[33px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl1.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl2.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl3.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl4.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
         <div className="flex flex-row justify-center space-x-[33px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl5.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl6.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl7.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
         <div className="flex flex-row justify-center space-x-[33px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl8.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl9.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
       </div>
 
       <div className="hidden flex-col justify-center items-center space-y-[5px] mw w-full lg:flex 2xl:hidden">
         <div className="flex flex-row justify-center space-x-[103px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl1.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl2.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl3.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl4.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
         <div className="flex flex-row justify-center space-x-[103px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl5.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl6.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl7.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
         <div className="flex flex-row justify-center space-x-[103px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl8.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl9.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
       </div>
 
       <div className="hidden flex-col justify-center items-center space-y-[95px] mw w-full 2xl:flex">
         <div className="flex flex-row justify-center space-x-[206px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl1.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl2.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl3.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl4.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
         <div className="flex flex-row justify-center space-x-[206px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl5.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl6.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl7.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
         <div className="flex flex-row justify-center space-x-[206px]">
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
-          <ImageBox imageSrc="/peoples/hexagon1.png" />
+          <ImageBox imageSrc="/peoples/ppl8.png" coloredImageSrc="/peoples/hexagon1.png"/>
+          <ImageBox imageSrc="/peoples/ppl9.png" coloredImageSrc="/peoples/hexagon1.png"/>
         </div>
       </div>
     </div>

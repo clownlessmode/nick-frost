@@ -62,7 +62,7 @@ const CardV2 = () => {
 
 const Events: FC = () => {
   return (
-    <div className="mt-[80px] relative">
+    <div className="mt-[80px] sm:mt-[150px] md:mt-[100px] lg:mt-[120px] 2xl:mt-[150px] relative overflow-hidden">
       <div className="w-full flex flex-col space-y-[-5px] mw">
         <div className="mw justify-between md:flex w-full hidden sm:text-[66px] md:text-[52px] lg:text-[72px] 2xl:text-[144px] bg-gradient-to-r text-center from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-[32px] font-medium leading-none tracking-tight uppercase">
           <h1>EVERGREEN</h1>
@@ -76,7 +76,7 @@ const Events: FC = () => {
         </h1>
       </div>
 
-      <div className="mt-[20px]">
+      <div className="mt-[20px] sm:mt-[44px] md:mt-[40px] 2xl:mt-[60px]">
         <div className="w-full mw z-1 border-[0.5px] backdrop-blur-xs border-white/40 rounded-[25px] lg:rounded-[30px] flex-col bg-[rgba(0,0,0,0.1)] bg-no-repeat bg-cover px-[24px] py-[25px] flex gap-5">
           <div className="flex w-full flex-col md:grid md:grid-cols-10 gap-5">
             <Card
@@ -103,7 +103,7 @@ So your time and resources can be redirected towards your product and your custo
             <Card
               index={3}
               className="md:col-span-5"
-              subtitle="On every step of the process we test, analyze the details and improve your campaigns on a regular basis. To make sure that when you scale, it’s smooth sailing all the way to treasure island."
+              subtitle="On every step of the process we test, analyze the details and improve your campaigns on a regular basis. To make sure that when you scale, it's smooth sailing all the way to treasure island."
               title={
                 <>
                   IMPROVEMENT AND <span>speed</span>
@@ -114,14 +114,16 @@ So your time and resources can be redirected towards your product and your custo
           </div>
         </div>
       </div>
-      <div className="absolute inset-0 z-[-1] shrink-0 blur-[60px] flex justify-center items-center">
-        <Image
-          alt="hero-splash"
-          src={"/background/hero-splash.svg"}
-          width={1050}
-          height={212}
-          className="w-full h-2/3 object-cover scale-110"
-        />
+      <div className="absolute inset-0 z-[-1] shrink-0 blur-[60px] overflow-hidden">
+        <div className="w-full h-full flex justify-center items-center">
+          <Image
+            alt="hero-splash"
+            src={"/background/hero-splash.svg"}
+            width={1050}
+            height={212}
+            className="w-full h-2/3 object-contain max-w-none"
+          />
+        </div>
       </div>
     </div>
   );

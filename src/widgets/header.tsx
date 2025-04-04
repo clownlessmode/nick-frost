@@ -1,4 +1,5 @@
 import ContactButton from "@features/contact-button";
+import ProgressButtonsGroup from "@features/progress-button-group";
 import ProgressButtons from "@features/progress-buttons";
 import Image from "next/image";
 import React, { FC } from "react";
@@ -14,7 +15,14 @@ const Header: FC = () => {
           height={25}
         />
       </div>
+      <div className="md:hidden">
       <ProgressButtons />
+    </div>
+    
+    {/* Для md и выше показываем объединенные кнопки */}
+    <div className="hidden md:block">
+      <ProgressButtonsGroup />
+    </div>
       <div className="w-[85px]">
         <ContactButton />
       </div>

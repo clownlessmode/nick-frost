@@ -47,12 +47,12 @@ const FormulaItem = ({
 
 const Formula = () => {
   return (
-    <div className="flex flex-col mt-[33px]">
+    <div className="flex flex-col mt-[80px] sm:mt-[150px] md:mt-[100px] lg:mt-[120px] 2xl:mt-[150px]">
       <h1 className="bg-clip-text bg-gradient-to-r from-[#a2a1a7] via-white to-[#a2a1a7] font-medium text-[32px] text-transparent sm:text-[66px] md:text-[32px] lg:text-[42px] 2xl:text-[62px] text-center uppercase leading-none tracking-tight">
         PRODUCT LAUNCH <br className="md:hidden block" /> FORMULA
       </h1>
 
-      <div className="flex justify-center items-center mx-auto mt-[34px] p-[20px] sm:p-[42px] md:p-[55px] lg:p-[75px] 2xl:p-[115px] border-[0.5px] border-white/40 rounded-[17px] lg:rounded-[35px] 2xl:rounded-[70px] w-full max-w-[280px] sm:max-w-[600px] md:max-w-[728px] lg:max-w-[984px] 2xl:max-w-[1496px] text-[24px] sm:text-[50px] md:text-[52px] lg:text-[76px] 2xl:text-[115px] text-nowrap">
+      <div className="flex justify-center items-center mx-auto mt-[34px] sm:mt-[75px] md:mt-[30px] lg:mt-[40px] 2xl:mt-[56px] p-[20px] sm:p-[42px] md:p-[55px] lg:p-[75px] 2xl:p-[115px] border-[0.5px] border-white/40 rounded-[17px] lg:rounded-[35px] 2xl:rounded-[70px] w-full max-w-[280px] sm:max-w-[600px] md:max-w-[728px] lg:max-w-[984px] 2xl:max-w-[1496px] text-[24px] sm:text-[50px] md:text-[52px] lg:text-[76px] 2xl:text-[115px] text-nowrap">
         PLF = (<span className="text-[#1C8F74]">TG</span> +{" "}
         <span className="text-[#1C8F74]">EE</span>) × (
         <span className="text-[#1C8F74]">EP</span> +{" "}

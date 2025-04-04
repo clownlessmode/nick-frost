@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`py-[100px] overflow-x-hidden max-w-screen antialiased bg-background px-5 flex w-full noise-bg`}
+        className={`pt-[100px] pb-[40px] overflow-x-hidden max-w-screen antialiased bg-background px-5 flex w-full noise-bg`}
       >
         {children}
       </body>
