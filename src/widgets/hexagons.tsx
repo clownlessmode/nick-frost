@@ -28,7 +28,7 @@ const ImageBox: FC<{ imageSrc: string; coloredImageSrc?: string }> = ({
           height="900"
           preserveAspectRatio="xMidYMid slice"
           clipPath="url(#hexagonMask)"
-          className="w-[140px] h-[161px] object-cover scale-100 opacity-100 transition-opacity duration-300 group-hover:opacity-0"
+          className="w-[140px] h-[161px] object-cover scale-100 opacity-100 transition-opacity duration-300 group-hover:opacity-0 grayscale"
         />
 
         {/* Цветное изображение (по умолчанию скрытое) */}
