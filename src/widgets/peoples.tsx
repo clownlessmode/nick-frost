@@ -90,7 +90,9 @@ const Peoples: FC = () => {
       {/* Мобильная версия кнопок - в столбец */}
       <div className="w-full font-extralight flex flex-col items-center mt-[60px] md:hidden">
         <Button className="w-full shadow-[0_15px_20px_rgba(255,255,255,0.05)] relative bg-transparent border h-[48px] border-white/10 overflow-hidden group">
-          <span className="relative z-10">Simple Systems that 'Just Work'</span>
+          <span className="relative z-10">
+            Simple Systems that &apos;Just Work&apos;
+          </span>
           <div className="absolute inset-0 bg-gradient-to-l from-white/7 to-white/2"></div>
           <div className="absolute inset-0 backdrop-blur-[13.54px]"></div>
           <div className="absolute -inset-[0.45px] shadow-[0px_10.91px_24.28px_0.45px_rgba(255,255,255,0.05)] rounded-inherit"></div>
@@ -125,10 +127,10 @@ const Peoples: FC = () => {
       </div>
 
       {/* Десктопная версия кнопок - в ряд */}
-      <div className=" grid-cols-3 gap-4 lg:gap-6 mt-2 hidden md:grid max-w-[1520px] mx-auto">
+      <div className=" grid-cols-3 gap-4 lg:gap-6 mt-2 hidden md:grid mw mx-auto">
         <Button className="shadow-[0_15px_20px_rgba(255,255,255,0.05)] relative bg-transparent border h-[48px] 2xl:h-[100px] border-white/10 overflow-hidden group">
           <span className="relative z-10 md:text-[8px] lg:text-[12px] 2xl:text-[18px]">
-            Simple Systems that 'Just Work'
+            Simple Systems that &apos;Just Work&apos;
           </span>
           <div className="absolute inset-0 bg-gradient-to-l from-white/7 to-white/2"></div>
           <div className="absolute inset-0 backdrop-blur-[13.54px]"></div>

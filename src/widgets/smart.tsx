@@ -79,7 +79,7 @@ const Smart: FC = () => {
                   improve over time{" "}
                 </p>
               </div>
-              <ImageBox imageSrc="/mainstream/shest.png" />
+              <ImageBox imageSrc="/mainstream/chest.png" />
             </div>
             <div className="flex justify-between w-full items-center md:h-full  lg:col-span-1 text-[10px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]">
               <div className="flex flex-col justify-between items-center md:max-w-3/5">

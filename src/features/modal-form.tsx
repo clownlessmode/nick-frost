@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, FC, FormEvent, useState } from "react";
+import React, { ChangeEvent, FC, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -93,11 +93,6 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
   };
 
   // Переход к предыдущему шагу
-  const prevStep = () => {
-    if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
 
   // Переход к конкретному шагу
   const goToStep = (step: number) => {
@@ -113,10 +108,6 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
   };
 
   // Обработчик для совместимости с вашим существующим кодом
-  const handleFormSubmission = (e: FormEvent) => {
-    e.preventDefault();
-    handleFormSubmit(onSubmit)();
-  };
 
   const renderStepIndicator = () => {
     return (

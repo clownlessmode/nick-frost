@@ -3,9 +3,9 @@ import { cn } from "@shared/lib/utils";
 import Instagram from "@shared/ui/instagram";
 import Image from "next/image";
 import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const CardV1 = ({
-  banner,
   image,
   header,
   description,
@@ -132,16 +132,21 @@ const CardV1 = ({
             height={39}
             className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer"
           />
-
-          {hoveredImage === 0 && (
-            <div
-              className={`absolute left-[50px] top-0 ${getBlockWidth(
-                0
-              )} backdrop-blur-lg text-white p-4 rounded-lg z-30`}
-            >
-              <p className="text-sm">{decorationInfo[0]}</p>
-            </div>
-          )}
+          <AnimatePresence>
+            {hoveredImage === 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className={`absolute left-[50px] top-0 ${getBlockWidth(
+                  0
+                )} backdrop-blur-lg text-white p-4 rounded-lg z-30`}
+              >
+                <p className="text-sm">{decorationInfo[0]}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
       {/* Второе изображение (второе левое) */}
@@ -158,16 +163,21 @@ const CardV1 = ({
             height={39}
             className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer"
           />
-
-          {hoveredImage === 1 && (
-            <div
-              className={`absolute left-[50px] top-0 w-[220px]  backdrop-blur-lg text-white p-4 rounded-lg z-30 ${getBlockWidth(
-                1
-              )}`}
-            >
-              <p className="text-sm">{decorationInfo[1]}</p>
-            </div>
-          )}
+          <AnimatePresence>
+            {hoveredImage === 1 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className={`absolute left-[50px] top-0 w-[220px]  backdrop-blur-lg text-white p-4 rounded-lg z-30 ${getBlockWidth(
+                  1
+                )}`}
+              >
+                <p className="text-sm">{decorationInfo[1]}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
       {/* Третье изображение (третье левое) */}
@@ -184,16 +194,21 @@ const CardV1 = ({
             height={39}
             className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer"
           />
-
-          {hoveredImage === 2 && (
-            <div
-              className={`absolute left-[50px] top-0 w-[230px] backdrop-blur-lg text-white p-4 rounded-lg z-30 ${getBlockWidth(
-                2
-              )}`}
-            >
-              <p className="text-sm">{decorationInfo[2]}</p>
-            </div>
-          )}
+          <AnimatePresence>
+            {hoveredImage === 2 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className={`absolute left-[50px] top-0 w-[230px] backdrop-blur-lg text-white p-4 rounded-lg z-30 ${getBlockWidth(
+                  2
+                )}`}
+              >
+                <p className="text-sm">{decorationInfo[2]}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
@@ -211,16 +226,21 @@ const CardV1 = ({
             height={39}
             className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer"
           />
-
-          {hoveredImage === 3 && (
-            <div
-              className={`absolute right-[50px] top-0 w-[230px] backdrop-blur-lg text-white p-4 rounded-lg z-30 ${getBlockWidth(
-                3
-              )}`}
-            >
-              <p className="text-sm">{decorationInfo[3]}</p>
-            </div>
-          )}
+          <AnimatePresence>
+            {hoveredImage === 3 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className={`absolute right-[50px] top-0 w-[230px] backdrop-blur-lg text-white p-4 rounded-lg z-30 ${getBlockWidth(
+                  3
+                )}`}
+              >
+                <p className="text-sm">{decorationInfo[3]}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
@@ -238,16 +258,21 @@ const CardV1 = ({
             height={39}
             className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer"
           />
-
-          {hoveredImage === 4 && (
-            <div
-              className={`absolute right-[50px] top-0 w-[230px] backdrop-blur-lg text-white p-4 rounded-lg z-30 ${getBlockWidth(
-                4
-              )}`}
-            >
-              <p className="text-sm">{decorationInfo[4]}</p>
-            </div>
-          )}
+          <AnimatePresence>
+            {hoveredImage === 4 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className={`absolute right-[50px] top-0 w-[230px] backdrop-blur-lg text-white p-4 rounded-lg z-30 ${getBlockWidth(
+                  4
+                )}`}
+              >
+                <p className="text-sm">{decorationInfo[4]}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>
@@ -302,7 +327,7 @@ const CardV2 = ({
   src: string[];
 }) => {
   const [hoveredIcon, setHoveredIcon] = useState<number | null>(null);
-  
+
   // Функция для определения информации на основе header и индекса иконки
   const getIconInfo = (index: number) => {
     if (header === "KATE SHUMSKAYA") {
@@ -334,16 +359,21 @@ const CardV2 = ({
       }
     }
   };
-  
+
   // Функция для определения ширины блока
   const getBlockWidth = (index: number) => {
     if (header === "KATE SHUMSKAYA") {
       switch (index) {
-        case 0: return "w-[330px]";
-        case 1: return "w-[300px]";
-        case 2: return "w-[280px]";
-        case 3: return "w-[270px]";
-        default: return "w-[250px]";
+        case 0:
+          return "w-[330px]";
+        case 1:
+          return "w-[300px]";
+        case 2:
+          return "w-[280px]";
+        case 3:
+          return "w-[270px]";
+        default:
+          return "w-[250px]";
       }
     } else {
       return "w-[250px]";
@@ -353,10 +383,12 @@ const CardV2 = ({
   // Функция для определения позиции блока
   const getBlockPosition = (index: number) => {
     // В мобильном и планшетном виде иконки расположены в линию
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      return index === 0 || index === 2 ? "left-[calc(40%)]" : "right-[calc(40%)]";
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      return index === 0 || index === 2
+        ? "left-[calc(40%)]"
+        : "right-[calc(40%)]";
     }
-    
+
     // В десктопном виде иконки расположены в сетке 2x2
     // Для левой колонки (индексы 0, 2) блок появляется справа
     // Для правой колонки (индексы 1, 3) блок появляется слева
@@ -384,7 +416,7 @@ const CardV2 = ({
             900.000.000+ views in 8 months
           </div>
         )}
-        
+
         <div className="flex items-center justify-between gap-1 w-full mb-[15px] max-w-[193px] sm:max-w-[405px] md:gap-4 md:max-w-full md:flex-row md:grid md:grid-cols-2 md:max-h-[300px] md:mb-0 relative">
           {src.map((item, index) => (
             <div key={item} className="relative">
@@ -395,18 +427,31 @@ const CardV2 = ({
                 onMouseEnter={(idx) => setHoveredIcon(idx)}
                 onMouseLeave={() => setHoveredIcon(null)}
               />
-              
-              {hoveredIcon === index && (
-                <div 
-                  className={`absolute ${getBlockPosition(index)} top-1/2 -translate-y-1/2 ${getBlockWidth(index)} backdrop-blur-lg text-white p-4 rounded-lg z-30`}
-                >
-                  <p className="text-xs sm:text-[16px] md:text-[10px] lg:text-[18px]">{getIconInfo(index)}</p>
-                </div>
-              )}
+
+              <AnimatePresence>
+                {hoveredIcon === index && (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className={`absolute ${getBlockPosition(
+                      index
+                    )} top-1/2 -translate-y-1/2 ${getBlockWidth(
+                      index
+                    )} backdrop-blur-lg text-white p-4 rounded-lg z-30`}
+                  >
+                    <p className="text-xs sm:text-[16px] md:text-[10px] lg:text-[18px]">
+                      {getIconInfo(index)}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>
-        
+
         <h1 className="text-white lg:w-full lg:text-center 2xl:text-[50px] lg:max-w-[300px] text-center text-[24px] sm:text-[50px] font-medium leading-none tracking-tight uppercase md:max-w-[140px] md:text-[24px] lg:text-[48px]">
           {header}
         </h1>
