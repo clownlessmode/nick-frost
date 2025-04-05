@@ -10,7 +10,7 @@ interface ImageBoxProps {
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-const MainTitle = () => {
+export const MainTitle = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -83,7 +83,7 @@ const Mainstream: FC = () => {
               require constant work and attention
             </p>
           </div>
-          <ImageBox imageSrc="/mainstream/communities.webp" />
+          <ImageBox imageSrc="/mainstream/communities.png" />
         </div>
         <div className="flex justify-between w-full items-center md:h-full lg:col-span-1 text-[10px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]">
           <div className="py-2 flex flex-col leading-none justify-between items-start h-[65px] sm:h-[148px] md:h-[70px] lg:h-[94px] 2xl:h-[148px]">
@@ -95,7 +95,7 @@ const Mainstream: FC = () => {
               to make a decision
             </p>
           </div>
-          <ImageBox imageSrc="/mainstream/webinars.webp" />
+          <ImageBox imageSrc="/mainstream/webinars.png" />
         </div>
         <div className="flex justify-between w-full  lg:col-span-1 items-center text-[10px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]">
           <div className="py-2 flex flex-col leading-none justify-between items-start h-[65px] sm:h-[148px] md:h-[70px] lg:h-[94px] 2xl:h-[148px]">
@@ -104,7 +104,7 @@ const Mainstream: FC = () => {
               <span className="font-medium">low engagement and sales </span>
             </p>
           </div>
-          <ImageBox imageSrc="/mainstream/filter.webp" />
+          <ImageBox imageSrc="/mainstream/filter.png" />
         </div>
         <div className="flex justify-between w-full  lg:col-span-1 items-center text-[10px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]">
           <div className="py-2 flex flex-col leading-none justify-between items-start h-[65px] sm:h-[148px] md:h-[70px] lg:h-[94px] 2xl:h-[148px]">
@@ -113,7 +113,7 @@ const Mainstream: FC = () => {
               which affects your personal brand in the long term
             </p>
           </div>
-          <ImageBox imageSrc="/mainstream/sales.webp" />
+          <ImageBox imageSrc="/mainstream/sales.png" />
         </div>
       </div>
     </div>

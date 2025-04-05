@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { FC, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+// import { useScroll, useTransform } from "framer-motion";
 
 interface ImageBoxProps {
   imageSrc: string;
@@ -28,16 +28,19 @@ const ImageBox: FC<ImageBoxProps> = ({ imageSrc }) => {
 const Smart: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 0", "end start"], // Начинаем с 1/3 высоты экрана и заканчиваем, когда блок уходит из вида
-  });
+  // const { scrollYProgress } = useScroll({
+  //   target: containerRef,
+  //   offset: ["start 0", "end start"], // Начинаем с 1/3 высоты экрана и заканчиваем, когда блок уходит из вида
+  // });
 
   // Трансформируем scrollYProgress в значение translateY для заголовка
-  const mainStreamY = useTransform(scrollYProgress, [0, 1], [-5, 390]);
+  // const mainStreamY = useTransform(scrollYProgress, [0, 1], [-5, 390]);
 
   return (
-    <div className="mt-[30px] sm:mt-[60px] md:mt-[20px] lg:mt-[24px] 2xl:mt-[38px]" ref={containerRef}>
+    <div
+      className="mt-[30px] sm:mt-[60px] md:mt-[20px] lg:mt-[24px] 2xl:mt-[38px]"
+      ref={containerRef}
+    >
       {/* Мобильный заголовок */}
       <h1 className="block md:hidden bg-gradient-to-r from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-4xl font-medium leading-none tracking-tight text-center uppercase text-[99px] sm:text-[190px] md:text-[226px] lg:text-[300px] 2xl:text-[510px] mb-[-70px] sm:mb-[-75px]">
         SMART <br />
@@ -76,7 +79,7 @@ const Smart: FC = () => {
                   improve over time{" "}
                 </p>
               </div>
-              <ImageBox imageSrc="/mainstream/shest.webp" />
+              <ImageBox imageSrc="/mainstream/shest.png" />
             </div>
             <div className="flex justify-between w-full items-center md:h-full  lg:col-span-1 text-[10px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]">
               <div className="flex flex-col justify-between items-center md:max-w-3/5">
@@ -88,7 +91,7 @@ const Smart: FC = () => {
                   </span>
                 </p>
               </div>
-              <ImageBox imageSrc="/mainstream/brain.webp" />
+              <ImageBox imageSrc="/mainstream/brain.png" />
             </div>
             <div className="flex justify-between w-full  lg:col-span-1 items-center text-[10px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]">
               <div className="flex flex-col justify-between items-center md:max-w-3/5">
@@ -97,7 +100,7 @@ const Smart: FC = () => {
                   <span className="font-medium">in taking action NOW</span>
                 </p>
               </div>
-              <ImageBox imageSrc="/mainstream/kubok.webp" />
+              <ImageBox imageSrc="/mainstream/kubok.png" />
             </div>
             <div className="flex justify-between w-full  lg:col-span-1 items-center text-[10px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]">
               <div className="flex flex-col justify-between items-center md:max-w-3/5">
@@ -107,7 +110,7 @@ const Smart: FC = () => {
                   <span className="font-medium">long term customers </span>
                 </p>
               </div>
-              <ImageBox imageSrc="/mainstream/love.webp" />
+              <ImageBox imageSrc="/mainstream/love.png" />
             </div>
           </div>
         </div>
