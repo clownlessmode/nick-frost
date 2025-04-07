@@ -61,7 +61,7 @@ const Peoples: FC = () => {
       {/* Десктопная версия - видима только от md и выше */}
       <div className="md:mt-14 lg:mt-13 2xl:mt-10 relative hidden md:block">
         <div className="flex justify-center items-center gap-6 lg:gap-10 relative">
-          <PeopleCard src={"/peoples/creators.png"} text="TOP TIER CREATORS" />
+          <PeopleCard src={"/peoples/founders.png"} text="TOP TIER CREATORS" />
 
           <div className="relative">
             <PeopleCard
@@ -70,7 +70,7 @@ const Peoples: FC = () => {
             />
           </div>
 
-          <PeopleCard src={"/peoples/founders.png"} text="FOUNDERS" />
+          <PeopleCard src={"/peoples/creators.png"} text="FOUNDERS" />
         </div>
 
         {/* Изображение borderpc перемещено между картами и кнопками */}
@@ -128,8 +128,8 @@ const Peoples: FC = () => {
 
       {/* Десктопная версия кнопок - в ряд */}
       <div className=" grid-cols-3 gap-4 lg:gap-6 mt-2 hidden md:grid mw mx-auto">
-        <Button className="shadow-[0_15px_20px_rgba(255,255,255,0.05)] relative bg-transparent border h-[48px] 2xl:h-[100px] border-white/10 overflow-hidden group">
-          <span className="relative z-10 md:text-[8px] lg:text-[12px] 2xl:text-[18px]">
+        <Button className="shadow-[0_15px_20px_rgba(255,255,255,0.05)] relative bg-transparent border h-[48px] 2xl:h-[70px] border-white/10 overflow-hidden group">
+          <span className="relative font-extralight z-10 md:text-[8px] lg:text-[12px] 2xl:text-[18px]">
             Simple Systems that &apos;Just Work&apos;
           </span>
           <div className="absolute inset-0 bg-gradient-to-l from-white/7 to-white/2"></div>
@@ -137,8 +137,8 @@ const Peoples: FC = () => {
           <div className="absolute -inset-[0.45px] shadow-[0px_10.91px_24.28px_0.45px_rgba(255,255,255,0.05)] rounded-inherit"></div>
         </Button>
 
-        <Button className="shadow-[0_15px_20px_rgba(255,255,255,0.05)] relative bg-transparent border h-[48px] 2xl:h-[100px] border-white/10 overflow-hidden group">
-          <span className="relative z-10 md:text-[8px] lg:text-[12px] 2xl:text-[18px]">
+        <Button className="shadow-[0_15px_20px_rgba(255,255,255,0.05)] relative bg-transparent border h-[48px] 2xl:h-[70px] border-white/10 overflow-hidden group">
+          <span className="relative z-10 font-extralight md:text-[8px] lg:text-[12px] 2xl:text-[18px]">
             Growth without sacrificing personal touch
           </span>
           <div className="absolute inset-0 bg-gradient-to-l from-white/7 to-white/2"></div>
@@ -146,8 +146,8 @@ const Peoples: FC = () => {
           <div className="absolute -inset-[0.45px] shadow-[0px_10.91px_24.28px_0.45px_rgba(255,255,255,0.05)] rounded-inherit"></div>
         </Button>
 
-        <Button className="shadow-[0_15px_20px_rgba(255,255,255,0.05)] relative bg-transparent border h-[48px] 2xl:h-[100px] border-white/10 overflow-hidden group">
-          <span className="relative z-10 md:text-[8px] lg:text-[12px] 2xl:text-[18px]">
+        <Button className="shadow-[0_15px_20px_rgba(255,255,255,0.05)] relative bg-transparent border h-[48px] 2xl:h-[70px] border-white/10 overflow-hidden group">
+          <span className="relative z-10 font-extralight md:text-[8px] lg:text-[12px] 2xl:text-[18px]">
             Quality at scale
           </span>
           <div className="absolute inset-0 bg-gradient-to-l from-white/7 to-white/2"></div>

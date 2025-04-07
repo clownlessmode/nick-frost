@@ -11,6 +11,7 @@ import Models from "@widgets/models";
 import Formula from "@widgets/formula";
 import Next from "@widgets/next";
 import Footer from "@widgets/footer";
+import Headmainstream from "@widgets/headmainstream";
 const HomePage: FC = () => {
   return (
     <div className="w-full">
@@ -18,6 +19,7 @@ const HomePage: FC = () => {
       <Hero />
       <Video />
       <Peoples />
+      <Headmainstream />
       <Mainstream />
       <Smart />
       <Hexagons />

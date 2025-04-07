@@ -62,11 +62,11 @@ const CardV2 = () => {
 
 const Events: FC = () => {
   return (
-    <div className="mt-[80px] sm:mt-[150px] md:mt-[100px] lg:mt-[120px] 2xl:mt-[150px] relative overflow-hidden">
+    <div className="mt-[80px] sm:mt-[100px] md:mt-[150px] lg:mt-[220px] 2xl:mt-[280px] relative overflow-hidden">
       <div className="w-full flex flex-col space-y-[-5px] mw">
         <div className="mw justify-between md:flex w-full hidden sm:text-[66px] md:text-[52px] lg:text-[72px] 2xl:text-[144px] bg-gradient-to-r text-center from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-[32px] font-medium leading-none tracking-tight uppercase">
-          <h1>EVERGREEN</h1>
-          <h1>EVENTS</h1>
+          <h1 className="font-normal">EVERGREEN</h1>
+          <h1 className="font-normal">EVENTS</h1>
         </div>
         <h1 className="md:hidden sm:text-[66px] md:text-[52px] lg:text-[72px] 2xl:text-[144px] bg-gradient-to-r text-left from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-[32px] font-medium leading-none tracking-tight uppercase">
           EVERGREEN

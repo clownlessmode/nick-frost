@@ -521,7 +521,7 @@ const Models = () => {
         />
       </div>
 
-      <div className="w-full hidden flex-col justify-center items-center gap-5 mt-[80px]! mw mx-auto md:flex">
+      <div className="w-full hidden flex-col justify-center items-center gap-5 mt-[180px]! mw mx-auto md:flex">
         <div className="flex flex-row gap-5 w-full">
           <CardV1
             banner={true}

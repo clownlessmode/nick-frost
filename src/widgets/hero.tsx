@@ -19,14 +19,14 @@ const Hero: FC = () => {
       Campaigns That Sell for You on Autopilot
     </h2>
     <div className="absolute inset-0 z-[-1] shrink-0 blur-[60px] opacity-80 overflow-hidden">
-  <Image
-    alt="hero-splash"
-    src={"/background/hero-splash.svg"}
-    width={1050}
-    height={1000}
-    className="w-full h-full object-cover object-center scale-180"
-  />
-</div>
+      <Image
+        alt="hero-splash"
+        src={"/background/hero-splash.svg"}
+        width={1050}
+        height={1000}
+        className="w-full h-full object-cover object-center scale-180"
+      />
+    </div>
   </div>
 
   );
