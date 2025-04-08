@@ -37,23 +37,23 @@ const Peoples: FC = () => {
       {/* Мобильная версия - видима только до md */}
       <div className="mt-5 relative md:hidden">
         <div className="flex justify-center gap-3 sm:gap-[28px]">
-          <PeopleCard src={"/peoples/creators.png"} text="TOP TIER CREATORS" />
+          <PeopleCard src={"/peoples/coachers.png"} text="TOP TIER CREATORS" />
           <PeopleCard
             text="COACHES & CONSULTANTS"
-            src={"/peoples/coachers.png"}
+            src={"/peoples/founders.png"}
           />
         </div>
         <div className="w-full flex justify-center mt-[13px] sm:mt-[24px] gap-8">
           <div className="flex flex-row absolute -bottom-[60px] sm:-bottom-[90px]">
             <Image
-              className="size-[210px] sm:size-[400px]"
+              className="size-[210px] sm:size-[400px] invert-100"
               alt="border"
               src={"/peoples/border.svg"}
               width={204}
               height={210.5}
             />
           </div>
-          <PeopleCard src={"/peoples/founders.png"} text="FOUNDERS" />
+          <PeopleCard src={"/peoples/creators.png"} text="FOUNDERS" />
         </div>
         <div className="-top-12 bg-black z-[-1] w-1/2 left-1/2 -translate-x-1/2 blur-2xl h-[150%] absolute rounded-[50%]"></div>
       </div>
@@ -102,6 +102,7 @@ const Peoples: FC = () => {
           src={"/peoples/separator.svg"}
           width={3}
           height={40}
+          className="invert-100"
         />
 
         <Button className="w-full shadow-[0_15px_20px_rgba(255,255,255,0.05)] relative bg-transparent border h-[48px] border-white/10 overflow-hidden group">
@@ -117,6 +118,7 @@ const Peoples: FC = () => {
           src={"/peoples/separator.svg"}
           width={3}
           height={40}
+          className="invert-100"
         />
         <Button className="w-full shadow-[0_15px_20px_rgba(255,255,255,0.05)] relative bg-transparent border h-[48px] border-white/10 overflow-hidden group">
           <span className="relative z-10">Quality at scale</span>

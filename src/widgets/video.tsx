@@ -32,7 +32,7 @@ const Video: FC = () => {
             src={'/play.svg'}
             width={99}
             height={99}
-            className="w-[99px] h-[99px] absolute top-[188px] left-[45%]"
+            className="2xl:w-[99px] lg:w-[75px] md:w-[50px] sm:w-[75px] w-[25px] absolute 2xl:top-[188px] lg:top-[120px] md:top-[90px] top-[70px] sm:top-[130px] left-[45%]"
             onClick={onOpen}
           />
         <div className="absolute right-10 top-4 z-10 translate-x-1/2 -translate-y-1/2">

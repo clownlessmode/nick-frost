@@ -20,7 +20,7 @@ interface FormData {
   lastName: string;
   description: string;
   additionalField: string;
-  option: string;
+  option: string[];
 }
 
 type FormField = keyof FormData;
@@ -43,7 +43,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
       lastName: "",
       description: "",
       additionalField: "",
-      option: "",
+      option: [],
     },
   });
 
@@ -59,8 +59,13 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
   };
 
   // Обработчик выбора опции
-  const handleOptionSelect = (option: string) => {
-    setValue("option", option);
+  const handleOptionSelect = (selectedOption: string) => {
+    const currentOptions = watch("option");
+    const updatedOptions = currentOptions.includes(selectedOption) 
+      ? currentOptions.filter((opt) => opt !== selectedOption)
+      : [...currentOptions, selectedOption];
+
+    setValue("option", updatedOptions);
   };
 
   // Переход к следующему шагу
@@ -106,28 +111,29 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
     console.log("Form submitted:", data);
     // Здесь можно добавить логику отправки формы
   };
-
+  
   // Обработчик для совместимости с вашим существующим кодом
-
+  
   const renderStepIndicator = () => {
     return (
       <div className="flex gap-[10px] sm:gap-[12px] md:gap-[8px] lg:gap-[12px] 2xl:gap-[20px]">
-        {Array.from({ length: totalSteps }, (_, i) => i + 1).map((step) => (
+        {
+        Array.from({ length: totalSteps }, (_, i) => i + 1).map((step) => (
           <div
             key={step}
             className="flex flex-col items-center cursor-pointer"
             onClick={() => goToStep(step)}
           >
             <div
-              className={`w-[51px] h-[15px] sm:w-[75px] sm:h-[22px] md:w-[51px] md:h-[15px] lg:w-[75px] lg:h-[22px] 2xl:w-[121px] 2xl:h-[36px] rounded-[40px] flex items-center justify-center 
-              ${
-                currentStep === step
-                  ? "bg-[#1C8F74] text-white"
+              className={`transition-transform w-[51px] h-[15px] sm:w-[75px] sm:h-[22px] md:w-[51px] md:h-[15px] lg:w-[75px] lg:h-[22px] 2xl:w-[121px] 2xl:h-[36px] rounded-[40px] flex items-center justify-center 
+                ${currentStep === step
+                  ? "bg-[#1C8F74] text-white translate-y-[-10px]"
                   : "bg-white  text-black"
+                
               }`}
             >
               <span className="text-[6px] sm:text-[12px] md:text-[6px] lg:text-[10px] 2xl:text-[16px]">
-                {step} STEP
+                0{step} STEP
               </span>
             </div>
           </div>
@@ -143,7 +149,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
           <div className="flex flex-col gap-[30px]">
             <label
               htmlFor="firstName"
-              className="text-center uppercase text-[21px] sm:text-[42px] md:text-[21px] lg:text-[32px] 2xl:text-[50px]"
+              className="text-center uppercase text-[21px] sm:text-[42px] md:text-[21px] lg:text-[32px] 2xl:text-[50px] font-normal"
             >
               your full name
             </label>
@@ -262,11 +268,12 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 "RECOMMENDATIONS",
                 "CONTENT MARKETING",
                 "OTHER",
-              ].map((option) => (
-                <Button
+              ].map((option) => {
+                const isSelected = formData.option.includes(option)
+                return (<Button
                   key={option}
                   type="button"
-                  variant={formData.option === option ? "default" : "outline"}
+                  variant={isSelected ? "default" : "outline"}
                   className={`w-full h-[32px] rounded-[8px] 
                       sm:h-[48px] sm:rounded-[12px] 
                       md:h-[32px] md:rounded-[8px] 
@@ -275,7 +282,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                       border-[#FFFFFF]
                       text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]
                       ${
-                        formData.option === option
+                        isSelected
                           ? "bg-white text-black"
                           : "bg-transparent text-white border"
                       }`}
@@ -283,7 +290,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 >
                   {option}
                 </Button>
-              ))}
+              )})}
             </div>
             {errors.option && (
               <span className="text-red-500 text-sm">

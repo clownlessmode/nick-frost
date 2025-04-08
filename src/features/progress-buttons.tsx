@@ -7,6 +7,9 @@ const ProgressButtons: FC = () => {
   const { scrollYProgress } = useScroll();
   const [progress, setProgress] = useState(0);
 
+  //Наименования кнопок
+  const [btnName, setBtnName] = useState("Watch video");
+
   // Преобразуем scrollYProgress в проценты для градиента
   const gradientProgress = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
@@ -15,9 +18,23 @@ const ProgressButtons: FC = () => {
     const unsubscribe = gradientProgress.onChange((latest) => {
       setProgress(latest);
     });
-
     return () => unsubscribe();
   }, [gradientProgress]);
+
+  //Обновления для текста :-)
+  useEffect(() => {
+    const text = gradientProgress.onChange((latest) => {
+      if(latest >= 0 && latest < 35){
+        setBtnName("Watch video");
+      } else if (latest >= 35 && latest < 75){
+        setBtnName("Choose")
+      } else {
+        setBtnName("Book now")
+      };
+
+      return () => text();
+    })
+  }, [gradientProgress])
 
   return (
     <div>
@@ -35,7 +52,7 @@ const ProgressButtons: FC = () => {
             }%, rgba(0,0,0,0.17) 100%), linear-gradient(0.00deg, rgba(255,255,255,0.05), rgba(153,153,153,0.05) 100%)`,
           }}
         >
-          S-01 Watch video
+          {btnName}
         </Button>
       </motion.div>
     </div>

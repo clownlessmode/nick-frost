@@ -72,10 +72,19 @@ const Smart: FC = () => {
                   alt=""
                   width={100}
                   height={100}
-                  className="w-fit h-[35px] sm:h-[80px] md:h-[35px] lg:h-[49px] 2xl:h-[70px]"
+                  className="w-fit h-[35px] sm:h-[80px] md:h-[35px] lg:h-[49px] 2xl:h-[70px] relative right-[10px] hidden md:block"
                 />
+                <div className="md:hidden flex align-middle">
+                  <Image
+                    src="/arrowww.svg"
+                    alt=""
+                    width={100}
+                    height={100}
+                    className="w-fit h-[100%] relative right-[5px] "
+                  />
+                </div>
 
-                <p className="uppercase font-light max-w-[130px] sm:max-w-[310px] md:max-w-full w-full">
+                <p className="uppercase font-medium max-w-[130px] sm:max-w-[310px] md:max-w-full w-full">
                   improve over time{" "}
                 </p>
               </div>

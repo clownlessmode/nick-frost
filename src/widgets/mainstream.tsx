@@ -63,7 +63,7 @@ const ImageBox: FC<ImageBoxProps> = ({ imageSrc }) => {
 
 const Mainstream: FC = () => {
   return (
-    <div className="mt-[80px] sm:mt-[150px] md:mt-[100px] lg:mt-[120px] 2xl:mt-[150px] relative">
+    <div className="mt-[27px] sm:mt-[150px] md:mt-[100px] lg:mt-[120px] 2xl:mt-[150px] relative">
       {/* Мобильный заголовок */}
       <h1 className="block md:hidden bg-gradient-to-r from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-4xl font-medium leading-none tracking-tight text-center uppercase text-[54px] sm:text-[95px] md:text-[120px] lg:text-[158px] 2xl:text-[262px] mb-[-20px] sm:mb-[-35px]">
         MAINSTREAM <br />
