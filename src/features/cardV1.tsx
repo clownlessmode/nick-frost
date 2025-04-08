@@ -2,9 +2,7 @@
 import { useState } from "react";
 import Image from 'next/image';
 import { Instagram } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
 import PopUpInCard from "./popUpInCard";
-import useMeasure from "react-use-measure";
 import PopUpInCardReverse from "./popUpInCardReverse";
 
 const CardV1 = ({
@@ -20,7 +18,6 @@ const CardV1 = ({
     className: string;
   }) => {
     const [hoveredImage, setHoveredImage] = useState<number | null>(null);
-    const [ref, bounds] = useMeasure();
   
     // Информация для каждого декоративного изображения
     const getDecorationInfo = () => {
@@ -52,34 +49,34 @@ const CardV1 = ({
       }
     };
   
-    const getBlockWidth = (index: number) => {
-      switch (header) {
-        case "SAVVA ALTMAN":
-          // Разные ширины для разных блоков Savva
-          return index === 0
-            ? "w-[500px]"
-            : index === 1
-            ? "w-[200px]"
-            : index === 2
-            ? "w-[10px]"
-            : index === 3
-            ? "w-[20px]"
-            : "w-[300px]";
-        case "NICK FROST":
-          // Разные ширины для разных блоков Nick
-          return index === 0
-            ? "w-[100px]"
-            : index === 1
-            ? "w-[220px]"
-            : index === 2
-            ? "w-[240px]"
-            : index === 3
-            ? "w-[260px]"
-            : "w-[280px]";
-        default:
-          return "w-[230px]";
-      }
-    };
+    // const getBlockWidth = (index: number) => {
+    //   switch (header) {
+    //     case "SAVVA ALTMAN":
+    //       // Разные ширины для разных блоков Savva
+    //       return index === 0
+    //         ? "w-[500px]"
+    //         : index === 1
+    //         ? "w-[200px]"
+    //         : index === 2
+    //         ? "w-[10px]"
+    //         : index === 3
+    //         ? "w-[20px]"
+    //         : "w-[300px]";
+    //     case "NICK FROST":
+    //       // Разные ширины для разных блоков Nick
+    //       return index === 0
+    //         ? "w-[100px]"
+    //         : index === 1
+    //         ? "w-[220px]"
+    //         : index === 2
+    //         ? "w-[240px]"
+    //         : index === 3
+    //         ? "w-[260px]"
+    //         : "w-[280px]";
+    //     default:
+    //       return "w-[230px]";
+    //   }
+    // };
   
     // Получаем информацию на основе header
     const decorationInfo = getDecorationInfo();

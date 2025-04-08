@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from "motion/react";
 import TextInPopUpCard from "./textInPopUpCard";
 
 export default function PopUpInCardReverse({hovImg, label, num}: {hovImg: number | null, label: string, num: number}) {

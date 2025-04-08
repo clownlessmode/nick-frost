@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import CardV1 from "@features/cardV1";
 import CardV2 from "@features/cardV2";
 
