@@ -153,33 +153,37 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
             >
               your full name
             </label>
-            <Input
-              id="firstName"
-              type="text"
-              {...register("firstName", { required: "First name is required" })}
-              onChange={handleChange}
-              placeholder="FIRST NAME"
-              className="bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
-            />
-            {errors.firstName && (
-              <span className="text-red-500 text-sm">
-                {errors.firstName.message}
-              </span>
-            )}
+            <div>
+              <Input
+                id="firstName"
+                type="text"
+                {...register("firstName", { required: "First name is required" })}
+                onChange={handleChange}
+                placeholder="FIRST NAME"
+                className="mb-[5px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+              />
+              {errors.firstName && (
+                <span className="text-red-500 text-sm ml-[10px]">
+                  {errors.firstName.message}
+                </span>
+              )}
+            </div>
 
-            <Input
-              id="lastName"
-              type="text"
-              {...register("lastName", { required: "Last name is required" })}
-              onChange={handleChange}
-              placeholder="LAST NAME"
-              className="bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
-            />
-            {errors.lastName && (
-              <span className="text-red-500 text-sm">
-                {errors.lastName.message}
-              </span>
-            )}
+            <div>
+              <Input
+                id="lastName"
+                type="text"
+                {...register("lastName", { required: "Last name is required" })}
+                onChange={handleChange}
+                placeholder="LAST NAME"
+                className="mb-[5px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+              />
+              {errors.lastName && (
+                <span className="text-red-500 text-sm ml-[10px]">
+                  {errors.lastName.message}
+                </span>
+              )}
+            </div>
           </div>
         );
       case 2:
@@ -197,20 +201,22 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
             >
               Example: I help IT-Companies get more clients using LinkedIn Ads
             </label>
-            <textarea
-              id="description"
-              {...register("description", {
-                required: "Description is required",
-              })}
-              onChange={handleChange}
-              placeholder="Enter text"
-              className="w-full p-2 bg-transparent border border-[#FFFFFF] h-[80px] rounded-[8px] sm:h-[180px] sm:rounded-[12px] md:h-[100px] md:rounded-[8px] lg:h-[150px] lg:rounded-[12px] 2xl:h-[200px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
-            />
-            {errors.description && (
-              <span className="text-red-500 text-sm">
-                {errors.description.message}
-              </span>
-            )}
+            <div className="w-full">
+              <textarea
+                id="description"
+                {...register("description", {
+                  required: "Description is required",
+                })}
+                onChange={handleChange}
+                placeholder="Enter text"
+                className="mb-[5px] w-full p-2 bg-transparent border border-[#FFFFFF] h-[80px] rounded-[8px] sm:h-[180px] sm:rounded-[12px] md:h-[100px] md:rounded-[8px] lg:h-[150px] lg:rounded-[12px] 2xl:h-[200px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+              />
+              {errors.description && (
+                <span className="text-red-500 text-sm text-center">
+                  {errors.description.message}
+                </span>
+              )}
+            </div>
           </div>
         );
       case 3:
@@ -222,34 +228,36 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
             >
               What is the price of your main offer (in USD)?
             </label>
-            <Input
-              id="additionalField"
-              type="text"
-              {...register("additionalField", {
-                required: "Price is required",
-                pattern: {
-                  value: /^[0-9]+(\.[0-9]{1,2})?$/,
-                  message: "Please enter a valid number",
-                },
-              })}
-              onChange={(e) => {
-                // Разрешаем только числа и точку для десятичных
-                const value = e.target.value.replace(/[^0-9.]/g, "");
-                const dotCount = (value.match(/\./g) || []).length;
-                if (dotCount > 1) {
-                  return;
-                }
-                e.target.value = value;
-                handleChange(e);
-              }}
-              placeholder="10.000$"
-              className="bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px] pr-[70px]"
-            />
-            {errors.additionalField && (
-              <span className="text-red-500 text-sm">
-                {errors.additionalField.message}
-              </span>
-            )}
+            <div className="w-full">
+              <Input
+                id="additionalField"
+                type="text"
+                {...register("additionalField", {
+                  required: "Price is required",
+                  pattern: {
+                    value: /^[0-9]+(\.[0-9]{1,2})?$/,
+                    message: "Please enter a valid number",
+                  },
+                })}
+                onChange={(e) => {
+                  // Разрешаем только числа и точку для десятичных
+                  const value = e.target.value.replace(/[^0-9.]/g, "");
+                  const dotCount = (value.match(/\./g) || []).length;
+                  if (dotCount > 1) {
+                    return;
+                  }
+                  e.target.value = value;
+                  handleChange(e);
+                }}
+                placeholder="10.000$"
+                className="mb-[5px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px] pr-[70px]"
+              />
+              {errors.additionalField && (
+                <span className="text-red-500 text-sm ml-[10px]">
+                  {errors.additionalField.message}
+                </span>
+              )}
+            </div>
           </div>
         );
       case 4:

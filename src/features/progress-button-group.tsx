@@ -2,6 +2,7 @@
 import { FC, useEffect, useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
 import { Button } from "@shared/ui/button";
+import { cn } from "@shared/lib/utils";
 
 const ProgressButtonsGroup: FC = () => {
   const { scrollYProgress } = useScroll();
@@ -51,16 +52,28 @@ const ProgressButtonsGroup: FC = () => {
   };
 
   return (
-    <div className="flex items-center relative">
+    <div className="flex items-center relative ">
       {buttons.map((button, index) => {
         const buttonProgress = getElementProgress(index, false);
 
         return (
           <div key={button.id} className="flex items-center">
             {/* Кнопка */}
-            <div className="relative z-10">
+            <div className={cn(
+              "relative z-10",
+              index ==  0 ? "left-[1px]" : "",
+              index == 1 ? "right-[1px]" : "",
+              index == 2 ? "right-[3px]" : ""
+              )}>
               <Button
-                className="uppercase box-border border-[0.56px] border-solid border-[rgba(255,255,255,0.05)] backdrop-blur-[4.48px] bg-clip-padding rounded-[20px]"
+                className={
+                  cn(
+                    "uppercase box-border border-[0.56px] border-solid border-[rgba(255,255,255,0.05)] backdrop-blur-[4.48px] bg-clip-padding rounded-[20px]", 
+                    index == 0 ? "border-r-[0]" : "",
+                    index == 1 ? "border-l-0 border-r-0" : "",
+                    index == 2 ? "border-l-0" : ""
+                  )
+                }
                 style={{
                   backgroundImage:
                     buttonProgress > 0
@@ -78,7 +91,7 @@ const ProgressButtonsGroup: FC = () => {
             {/* Соединитель (для всех кнопок кроме последней) */}
             {index < buttons.length - 1 && (
               <div
-                className="relative h-[14px] z-0 border-[0.56px] border-solid border-[rgba(255,255,255,0.05)]"
+                className={cn("relative h-[14px] z-0 border-[0.56px] border-r-[0] border-l-[0] border-solid border-[rgba(255,255,255,0.05)]", index == 1 ? "right-[2px]" : "")}
                 style={{
                   width: "24px",
                   margin: "0 -1px", // Отрицательный margin для перекрытия границ
@@ -86,7 +99,7 @@ const ProgressButtonsGroup: FC = () => {
               >
                 {/* Фоновый слой соединителя (такой же как у неактивной кнопки) */}
                 <div
-                  className="absolute w-full h-full rounded-full backdrop-blur-[4.48px]"
+                  className="absolute w-full h-full backdrop-blur-[4.48px]"
                   style={{
                     backgroundImage:
                       "linear-gradient(0.00deg, rgba(255,255,255,0.05), rgba(153,153,153,0.05) 100%)",
@@ -96,7 +109,7 @@ const ProgressButtonsGroup: FC = () => {
 
                 {/* Прогресс-слой соединителя (такой же как у активной части кнопки) */}
                 <div
-                  className="absolute h-full rounded-full"
+                  className="absolute h-full"
                   style={{
                     width: `${getElementProgress(index, true)}%`,
                     transition: "width 0.2s ease-out",
