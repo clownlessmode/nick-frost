@@ -122,8 +122,8 @@ const CardV1 = ({
         <div className="absolute left-[31px] sm:left-[62px] top-[25px] sm:top-[50px] md:left-[31px] md:top-[25px] lg:left-[20px] lg:top-[64px] 2xl:left-[30px] 2xl:top-[80px] z-10">
           <div
             className="relative"
-            onMouseEnter={() => setHoveredImage(null)}
-            onMouseLeave={() => setHoveredImage(0)}
+            onMouseEnter={() => setHoveredImage(0)}
+            onMouseLeave={() => setHoveredImage(null)}
           >
             <Image
               src="/models/zzzz.svg"
@@ -174,8 +174,8 @@ const CardV1 = ({
         <div className="absolute right-[21px] sm:right-[42px] sm:top-[76px] top-[38px] md:right-[21px] md:top-[76px] lg:right-[30px] lg:top-[108px] 2xl:right-[40px] 2xl:top-[140px] z-10">
           <div
             className="relative"
-            onMouseEnter={() => setHoveredImage(null)}
-            onMouseLeave={() => setHoveredImage(3)}
+            onMouseEnter={() => setHoveredImage(3)}
+            onMouseLeave={() => setHoveredImage(null)}
           >
             <PopUpInCardReverse hovImg={hoveredImage} label={decorationInfo[3]} num={3} />
             <Image
