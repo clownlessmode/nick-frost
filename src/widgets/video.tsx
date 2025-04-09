@@ -1,6 +1,5 @@
 "use client"
-import { Modal, ModalBody, ModalContent, useDisclosure } from "@heroui/modal";
-import { YouTubeEmbed } from "@next/third-parties/google";
+import { Modal, ModalContent, useDisclosure } from "@heroui/modal";
 import { Button } from "@shared/ui/button";
 import Image from "next/image";
 import React, { FC } from "react";
@@ -10,10 +9,8 @@ const Video: FC = () => {
   return (
     <>
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton placement="center" backdrop="blur" tabIndex={3} className="z-[99]">
-          <ModalContent className="z-[99]">
-            <ModalBody className="flex flex-row justify-center">
-              <YouTubeEmbed videoid="sM8uixb6Xo8" width={720} height={405}/>
-            </ModalBody>
+          <ModalContent className="z-[99] w-[720px] overflow-hidden">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/sM8uixb6Xo8?si=LAt3ueQtoFkGvwPR" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
           </ModalContent>
         </Modal>
       <div className="mx-auto mt-5! sm:mt-[48px]! md:mt-4! lg:mt-[24px]! 2xl:mt-[38px]! relative  aspect-video max-w-[280px] sm:max-w-[600px] md:max-w-[412px] lg:max-w-[560px] 2xl:max-w-[820px]">

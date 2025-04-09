@@ -11,13 +11,13 @@ export default function Headmainstream() {
                     height={230}
                     className=''/>
             </div>
-            <div className="jutify-center md:hidden flex">
+            <div className="justify-center md:hidden flex w-full">
                 <Image 
                     alt="There are 2 ways to scale your hight ticket offer"
                     src={"./mobileLogo.svg"}
                     width={276}
                     height={134}
-                    className='' />
+                    className='w-full h-auto' />
             </div>
         </div>
     )

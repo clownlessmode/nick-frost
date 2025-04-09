@@ -4,7 +4,7 @@ export default function PopUpInCard({hovImg, label, num}: {hovImg: number | null
 
   return (
       hovImg === num && (
-        <div className="relative lg:left-[60px] md:left-[45px] lg:bottom-[55px] md:bottom-[40px] bottom-[40px] md:w-[220px] w-[250px]">
+        <div className="relative lg:left-[100px] md:left-[45px] lg:bottom-[45px] md:bottom-[40px] bottom-[40px] md:w-[220px] w-[250px]">
           <div className="relative mb:top-0 mb:left-0 top-[-10px] left-[-40px]">
             <div className="bg-white 
               lg:w-[25px] md:w-[20px] w-[25px]

@@ -7,7 +7,7 @@ export default function PopUpInCardReverse({hovImg, label, num}: {hovImg: number
             <div
           >
             <div className="absolute left-[57px] bottom-[45px] lg:w-[220px] md:w-[180px]">
-              <div className="relative mb:top-0 mb:left-0 top-[35px] left-[-7px]">
+              <div className="relative md:top-[-11px] md:left-[2px] top-[35px] left-[-7px]">
                 <div className="bg-white w-[25px] h-[1px] relative md:right-[70px] right-[64px] md:bottom-auto bottom-[35px] rotate-[45deg]"></div>
                 <div className="absolute md:bottom-[9px] bottom-[43px] lg:right-[286px] md:right-[246px] right-[85px] w-[220px]">
                   <div className="w-full  bg-[#ffffff25] p-[10px] rounded-t-[20px] flex justify-center items-center">
