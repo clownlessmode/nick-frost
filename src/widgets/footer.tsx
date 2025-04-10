@@ -12,7 +12,7 @@ const Footer = () => {
         width={1050}
         height={1050}
       />
-       <p className="text-[8px] sm:text-[16px] md:text-[8px] lg:text-[10px] 2xl:text-[16px] max-w-[65px] sm:max-w-[125px] md:max-w-full text-right md:text-center">Personal data processing policy</p>
+       <p className="text-[8px] sm:text-[16px] md:text-[8px] lg:text-[10px] 2xl:text-[16px] max-w-[65px] sm:max-w-[125px] md:max-w-full text-right md:text-center line-clamp-2">Personal data processing policy</p>
     </div>
   );
 };

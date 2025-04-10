@@ -60,7 +60,7 @@ const Smart: FC = () => {
         SMART
       </motion.h1> */}
         <div>
-          <div className="w-full md:px-30 sm:p-[35px] bg-no-repeat bg-cover shadow-[0_0_30px_rgba(62,213,178,0.2)] border-[0.5px] bg-[rgba(0,0,0,0.1)] backdrop-blur-xs mw2 border-white/40 rounded-[15px]" style={{ backgroundImage: `url("/background/smart.png")` }}>
+          <div className="w-full md:px-30 sm:p-[35px] bg-no-repeat bg-cover shadow-[0_0_30px_rgba(62,213,178,0.2)] border-[0.5px] bg-[rgba(0,0,0,0.1)] backdrop-blur-xs mw2 border-white/40 rounded-[15px] gradient">
           <p className="w-full text-center mb-[35px] hidden lg:block uppercase text-[36px]">Evergreen Event Campaigns</p>
           <div
             className=" md:grid md:grid-cols-2 md:grid-rows-2   flex-col  p-[25px] flex gap-5 sm:gap-[25px] md:gap-[40px] lg:gap-x-[77px] lg:gap-y-[35px]"
@@ -131,3 +131,5 @@ const Smart: FC = () => {
 };
 
 export default Smart;
+
+//style={{ backgroundImage: `url("/background/smart.png")` }}

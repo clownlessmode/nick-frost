@@ -1,10 +1,20 @@
+"use client"
 import Image from "next/image";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 
 const ImageBox: FC<{ imageSrc: string; coloredImageSrc?: string }> = ({
   imageSrc,
   coloredImageSrc,
 }) => {
+  const [thisImage, setThisImage] = useState(imageSrc);
+  const mobileClick = () => {
+    if(typeof window != 'undefined'){
+      if(window.outerWidth < 768){
+        setThisImage(coloredImageSrc !== undefined ? coloredImageSrc : imageSrc);
+      }
+    }
+  }
+
   return (
     <div className="relative w-[140px] h-[173px] mt-8 overflow-hidden max-w-[140px] sm:scale-125 md:scale-125 lg:scale-175 2xl:scale-[2.5] group">
       <svg
@@ -23,12 +33,13 @@ const ImageBox: FC<{ imageSrc: string; coloredImageSrc?: string }> = ({
 
         {/* Черно-белое изображение (по умолчанию видимое) */}
         <image
-          href={imageSrc}
+          href={thisImage}
           width="900"
           height="900"
           preserveAspectRatio="xMidYMid slice"
           clipPath="url(#hexagonMask)"
           className="w-[140px] h-[161px] object-cover scale-100 opacity-100 transition-opacity duration-300 group-hover:opacity-0 grayscale"
+          onClick={mobileClick}
         />
 
         {/* Цветное изображение (по умолчанию скрытое) */}

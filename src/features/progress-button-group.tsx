@@ -71,8 +71,8 @@ const ProgressButtonsGroup: FC = () => {
           <linearGradient id="paint0_linear_1_2" x1="0" y1="28" x2="696" y2="28" gradientUnits="userSpaceOnUse">
             {/* <stop offset="1" stop-color="#3ED5B2"/>
             <stop offset="1" stop-color="#3ED5B2" stop-opacity="0"/> */}
-            <stop offset="0%" stop-color="#3ED5B2" />
-            <stop offset={`${offset * 100}%`} stop-color="#3ED5B2" />
+            <stop offset="0%" stop-color="#1C8F74" />
+            <stop offset={`${offset * 100}%`} stop-color="#1C8F74" />
             <stop offset={`${offset * 100}%`} stop-color="transparent" />
             <stop offset="100%" stop-color="transparent" />
           </linearGradient>

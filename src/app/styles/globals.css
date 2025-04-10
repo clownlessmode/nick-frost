@@ -233,3 +233,7 @@ body {
     backdrop-filter:blur(4px);clip-path:url(#bgblur_1_264_47_clip_path);height:100%;width:100%
   }
 }
+
+.gradient{
+  background: radial-gradient(99.29% 554.92% at 50% 50%, rgba(10, 10, 10, 0.8) 0%, rgba(33, 130, 107, 0.8) 100%)
+}

@@ -156,8 +156,8 @@ const CardV1 = ({
         <div className="absolute left-[63px] top-[174px] sm:left-[126px] sm:top-[348px] md:left-[63px] md:top-[174px] lg:left-[30px] lg:top-[208px] 2xl:left-[40px] 2xl:top-[240px] z-10">
           <div
             className="relative"
-            onMouseEnter={() => setHoveredImage(null)}
-            onMouseLeave={() => setHoveredImage(2)}
+            onMouseEnter={() => setHoveredImage(2)}
+            onMouseLeave={() => setHoveredImage(null)}
           >
             <Image
               src="/models/zzzz.svg"

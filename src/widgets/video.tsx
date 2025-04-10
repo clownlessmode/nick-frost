@@ -7,11 +7,21 @@ import React, { FC } from "react";
 
 const Video: FC = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  let widthVideo = 720;
+  let widthHeight = 400;
+
+  if(typeof window !== 'undefined'){
+    if (window.outerWidth < 768){
+      widthVideo = 300;
+      widthHeight = 170;
+    }
+  }
+
   return (
     <>
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton placement="center" backdrop="blur" tabIndex={3} className="z-[99]">
-          <ModalContent className="z-[99] w-[720px] overflow-hidden">
-            <YouTubeEmbed videoid="sM8uixb6Xo8" width={720} height={400} />
+          <ModalContent className="z-[99] w-[300px] md:w-[720px] overflow-hidden">
+            <YouTubeEmbed videoid="sM8uixb6Xo8" width={widthVideo} height={widthHeight} />
           </ModalContent>
         </Modal>
       <div className="mx-auto mt-5! sm:mt-[48px]! md:mt-4! lg:mt-[24px]! 2xl:mt-[38px]! relative  aspect-video max-w-[280px] sm:max-w-[600px] md:max-w-[412px] lg:max-w-[560px] 2xl:max-w-[820px]">

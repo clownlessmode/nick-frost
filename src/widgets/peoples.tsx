@@ -46,7 +46,7 @@ const Peoples: FC = () => {
         <div className="w-full flex justify-center mt-[13px] sm:mt-[24px] gap-8">
           <div className="flex flex-row absolute -bottom-[60px] sm:-bottom-[90px]">
             <Image
-              className="size-[210px] sm:size-[400px] invert-100"
+              className="size-[210px] sm:size-[400px]"
               alt="border"
               src={"/peoples/border.svg"}
               width={204}
