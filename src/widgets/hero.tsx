@@ -18,7 +18,7 @@ const Hero: FC = () => {
       We Build and Install Proprietary Evergreen Event <br />
       Campaigns That Sell for You on Autopilot
     </h2>
-    <div className="absolute  inset-0 z-[-1] shrink-0 blur-[60px] opacity-80 sm:overflow-hidden">
+    <div className="absolute top-[150px] inset-0 z-[-1] shrink-0 blur-[60px] opacity-80 sm:overflow-hidden">
       <Image
         alt="hero-splash"
         src={"/background/hero-splash.svg"}

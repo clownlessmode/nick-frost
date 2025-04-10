@@ -221,3 +221,15 @@ body {
 .pulse-border {
   animation: pulse 2s infinite;
 }
+
+@layer utilities {
+  .stlye1{
+    backdrop-filter:blur(4px);clip-path:url(#bgblur_0_264_47_clip_path);height:100%;width:100%
+  }
+}
+
+@layer utilities{
+  .stlye2{
+    backdrop-filter:blur(4px);clip-path:url(#bgblur_1_264_47_clip_path);height:100%;width:100%
+  }
+}

@@ -136,7 +136,7 @@ const CardV2 = ({
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className={`absolute ${getBlockPosition(
+                        className={`absolute w-full ${getBlockPosition(
                           index
                         )} top-1/2 -translate-y-1/2 ${getBlockWidth(
                           index

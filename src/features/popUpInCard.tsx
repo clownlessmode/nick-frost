@@ -16,7 +16,7 @@ export default function PopUpInCard({hovImg, label, num}: {hovImg: number | null
               md:top-auto top-[8px]
               rotate-[-45deg]"></div>
             <div className="absolute md:bottom-[9px] bottom-0 md:left-auto left-[90px]">
-              <div className="w-full  bg-[#ffffff25] p-[10px] rounded-t-[20px] flex justify-center items-center">
+              <div className="w-full  bg-[#00000080] p-[10px] rounded-t-[20px] flex justify-center items-center">
                 <TextInPopUpCard label={label} />
               </div>
               <div className="bg-white w-full h-[1px]"></div>

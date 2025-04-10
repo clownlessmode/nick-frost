@@ -36,11 +36,11 @@ const Next: FC = () => {
         animate={controls}
         variants={zoomVariants}
       >
-        <div className="flex flex-col gap-[18px] sm:gap-[37px] md:gap-[24px] lg:gap-[30px] 2xl:gap-[65px] px-[20px] py-[25px] sm:px-[42px] sm:py-[56px] md:px-[44px] md:py-[56px] lg:px-[53px] lg:py-[57px] 2xl:px-[102px] 2xl:py-[109px] border border-white/20 rounded-[12px] sm:rounded-[19px] md:rounded-[12px] lg:rounded-[14px] 2xl:rounded-[28px] backdrop-blur-md">
-          <h1 className="text-[33px] sm:text-[72px] md:text-[46px] lg:text-[55px] 2xl:text-[102px] uppercase">
+        <div className="flex flex-col gap-[18px] sm:gap-[37px] md:gap-[24px] lg:gap-[0] px-[20px] py-[25px] sm:px-[42px] sm:py-[56px] md:px-[44px] md:py-[56px] lg:px-[53px] lg:py-[57px] 2xl:px-[102px] 2xl:py-[109px] border border-white/20 rounded-[12px] sm:rounded-[19px] md:rounded-[12px] lg:rounded-[14px] 2xl:rounded-[28px] backdrop-blur-md">
+          <h1 className="text-[33px] sm:text-[72px] md:text-[46px] lg:text-[55px] 2xl:text-[102px] uppercase lg:mb-[69px]">
             what&apos;s next
           </h1>
-          <div className="flex flex-col gap-[10px] sm:gap-[20px] md:gap-[12px] lg:gap-[15px] 2xl:gap-[28px]">
+          <div className="flex flex-col gap-[10px] sm:gap-[20px] md:gap-[12px] lg:gap-[15px] 2xl:gap-[28px] lg:mb-[69px]">
             <div className="flex flex-col gap-[3px] sm:gap-[6px] md:gap-[7px] lg:gap-[5px] 2xl:gap-[10px]">
               <p className="font-light text-[8px] sm:text-[16px] md:text-[8px] lg:text-[10px] 2xl:text-[16px]">
                 [01]
@@ -97,7 +97,7 @@ const Next: FC = () => {
             FREE STRATEGY
           </Button> */}
           <ModalForm triggerText="FREE STRATEGY" />
-          <p className="uppercase font-light text-center text-[8px] mt-[8px] sm:text-[16px] sm:mt-[16px] md:text-[10px] md:mt-[10px] lg:text-[14px] lg:mt-[14px] 2xl:text-[28px] 2xl:mt-[28px]">
+          <p className="uppercase font-light text-center text-[8px] mt-[8px] sm:text-[16px] sm:mt-[16px] md:text-[10px] md:mt-[10px] lg:text-[14px] lg:mt-[30px] 2xl:text-[28px] 2xl:mt-[28px]">
             <span className="font-medium">step 3/3 -</span> apply for a free
             strategy call
           </p>

@@ -146,10 +146,10 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
     switch (currentStep) {
       case 1:
         return (
-          <div className="flex flex-col gap-[30px]">
+          <div className="flex flex-col">
             <label
               htmlFor="firstName"
-              className="text-center uppercase text-[21px] sm:text-[42px] md:text-[21px] lg:text-[32px] 2xl:text-[50px] font-normal"
+              className="text-center uppercase text-[21px] sm:text-[42px] md:text-[21px] lg:text-[32px] 2xl:text-[50px] font-normal md:mb-[40px] mb-[25px]"
             >
               your full name
             </label>
@@ -160,7 +160,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 {...register("firstName", { required: "First name is required" })}
                 onChange={handleChange}
                 placeholder="FIRST NAME"
-                className="mb-[5px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+                className="md:p-[24px] p-[10px] md:mb-[24px] mb-[18px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
               />
               {errors.firstName && (
                 <span className="text-red-500 text-sm ml-[10px]">
@@ -176,7 +176,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 {...register("lastName", { required: "Last name is required" })}
                 onChange={handleChange}
                 placeholder="LAST NAME"
-                className="mb-[5px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+                className="md:p-[24px] p-[10px] mb-[5px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
               />
               {errors.lastName && (
                 <span className="text-red-500 text-sm ml-[10px]">
@@ -188,16 +188,16 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
         );
       case 2:
         return (
-          <div className="flex flex-col items-center gap-[30px]">
+          <div className="flex flex-col items-center">
             <label
               htmlFor="description"
-              className="text-center uppercase text-[21px] leading-[25px] sm:text-[42px] sm:leading-[44px] md:text-[21px] md:leading-[25px] lg:text-[32px] lg:leading-[34px] 2xl:text-[50px] 2xl:leading-[54px] 2xl:max-w-[560px]"
+              className="text-center md:mb-[40px] mb-[25px] mb-[] uppercase text-[21px] leading-[25px] sm:text-[42px] sm:leading-[44px] md:text-[21px] md:leading-[25px] lg:text-[32px] lg:leading-[34px] 2xl:text-[50px] 2xl:leading-[54px] 2xl:max-w-[560px]"
             >
               Describe your offer in 1-3 sentences
             </label>
             <label
               htmlFor="description"
-              className="text-center text-[12px] sm:text-[16px] md:text-[14px] lg:text-[16px] 2xl:text-[20px]"
+              className="text-center text-[12px] md:mb-[40px] mb-[25px]  sm:text-[16px] md:text-[14px] lg:text-[16px] 2xl:text-[20px]"
             >
               Example: I help IT-Companies get more clients using LinkedIn Ads
             </label>
@@ -209,7 +209,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 })}
                 onChange={handleChange}
                 placeholder="Enter text"
-                className="mb-[5px] w-full p-2 bg-transparent border border-[#FFFFFF] h-[80px] rounded-[8px] sm:h-[180px] sm:rounded-[12px] md:h-[100px] md:rounded-[8px] lg:h-[150px] lg:rounded-[12px] 2xl:h-[200px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+                className="md:p-[24px] p-[10px] mb-[5px] w-full bg-transparent border border-[#FFFFFF] h-[80px] rounded-[8px] sm:h-[180px] sm:rounded-[12px] md:h-[100px] md:rounded-[8px] lg:h-[150px] lg:rounded-[12px] 2xl:h-[200px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-[#c0c0c0] placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
               />
               {errors.description && (
                 <span className="text-red-500 text-sm text-center">
@@ -221,10 +221,10 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
         );
       case 3:
         return (
-          <div className="flex items-center flex-col gap-[30px]">
+          <div className="flex items-center flex-col">
             <label
               htmlFor="additionalField"
-              className="text-center uppercase text-[21px] leading-[25px] max-w-[150px] sm:text-[42px] sm:leading-[44px] sm:max-w-[300px] md:text-[21px] md:leading-[25px] md:max-w-[200px] lg:text-[32px] lg:leading-[34px] lg:max-w-[300px] 2xl:text-[50px] 2xl:leading-[54px] 2xl:max-w-[480px]"
+              className="md:mb-[40px] mb-[25px] text-center uppercase text-[21px] leading-[25px] max-w-[150px] sm:text-[42px] sm:leading-[44px] sm:max-w-[300px] md:text-[21px] md:leading-[25px] md:max-w-[200px] lg:text-[32px] lg:leading-[34px] lg:max-w-[300px] 2xl:text-[50px] 2xl:leading-[54px] 2xl:max-w-[480px]"
             >
               What is the price of your main offer (in USD)?
             </label>
@@ -250,7 +250,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                   handleChange(e);
                 }}
                 placeholder="10.000$"
-                className="mb-[5px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px] pr-[70px]"
+                className="md:p-[24px] p-[10px] mb-[5px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-[#c0c0c0] placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px] pr-[70px]"
               />
               {errors.additionalField && (
                 <span className="text-red-500 text-sm ml-[10px]">
@@ -262,13 +262,13 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
         );
       case 4:
         return (
-          <div className="flex items-center flex-col gap-[30px] w-full">
-            <label className="text-center uppercase text-[21px] leading-[25px] sm:text-[42px] sm:leading-[44px] md:text-[21px] md:leading-[25px] lg:text-[32px] lg:leading-[34px] 2xl:text-[50px] 2xl:leading-[54px]">
+          <div className="flex items-center flex-col w-full">
+            <label className="md:mb-[30px] mb-[25px]  text-center uppercase text-[21px] leading-[25px] sm:text-[42px] sm:leading-[44px] md:text-[21px] md:leading-[25px] lg:text-[32px] lg:leading-[34px] 2xl:text-[50px] 2xl:leading-[54px]">
               <span className="block max-w-[150px] sm:max-w-[300px] md:max-w-[200px] lg:max-w-[300px] 2xl:max-w-[480px] mx-auto">
                 How do you currently get clients?
               </span>
             </label>
-            <div className="grid grid-cols-2 gap-3 w-full">
+            <div className="grid grid-cols-2 gap-x-[24px] gap-y-[20px] w-full">
               {[
                 "COLD OUTREACH",
                 "E-MAIL MARKETING",
@@ -289,6 +289,8 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                       2xl:h-[72px] 2xl:rounded-[20px] 
                       border-[#FFFFFF]
                       text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]
+                      text-left! block
+                      md:px-[24px] p-x[10px]
                       ${
                         isSelected
                           ? "bg-white text-black"
@@ -343,7 +345,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 type="button"
                 onClick={nextStep}
                 variant="secondary"
-                className="w-full text-white bg-[#1C8F74] h-[29px] rounded-[10px] text-[10px] sm:h-[41px] sm:rounded-[12px] sm:text[16px] md:h-[29px] md:rounded-[10px] md:text-[10px] lg:h-[41px] lg:rounded-[12px] lg:text-[14px] 2xl:h-[67px] 2xl:rounded-[20px] 2xl:text-[22px]"
+                className="w-full md:mb-[10px] text-white bg-[#1C8F74] h-[29px] rounded-[10px] text-[10px] sm:h-[41px] sm:rounded-[12px] sm:text[16px] md:h-[29px] md:rounded-[10px] md:text-[10px] lg:h-[41px] lg:rounded-[12px] lg:text-[14px] 2xl:h-[67px] 2xl:rounded-[20px] 2xl:text-[22px]"
               >
                 Next step
               </Button>
@@ -351,7 +353,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
               <Button
                 type="submit"
                 variant="secondary"
-                className="w-full text-white bg-[#1C8F74] h-[29px] rounded-[10px] text-[10px] sm:h-[41px] sm:rounded-[12px] sm:text[16px] md:h-[29px] md:rounded-[10px] md:text-[10px] lg:h-[41px] lg:rounded-[12px] lg:text-[14px] 2xl:h-[67px] 2xl:rounded-[20px] 2xl:text-[22px]"
+                className="w-full md:mb-[10px] text-white bg-[#1C8F74] h-[29px] rounded-[10px] text-[10px] sm:h-[41px] sm:rounded-[12px] sm:text[16px] md:h-[29px] md:rounded-[10px] md:text-[10px] lg:h-[41px] lg:rounded-[12px] lg:text-[14px] 2xl:h-[67px] 2xl:rounded-[20px] 2xl:text-[22px]"
               >
                 Submit
               </Button>

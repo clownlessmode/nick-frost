@@ -47,7 +47,7 @@ const Smart: FC = () => {
       </h1>
 
       {/* Десктопный заголовок, который заходит за блок */}
-      <h1 className="hidden md:block bg-gradient-to-r from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-4xl font-medium leading-none tracking-tight text-center uppercase text-[99px] sm:text-[200px] md:text-[236px] lg:text-[310px] 2xl:text-[440px] relative -z-10 md:mb-[-250px] lg:mb-[-320px] 2xl:mb-[-400px]">
+      <h1 className="top-[80px] hidden md:block bg-gradient-to-r from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-4xl font-medium leading-none tracking-tight text-center uppercase text-[99px] sm:text-[200px] md:text-[236px] lg:text-[310px] 2xl:text-[440px] relative -z-10 md:mb-[-250px] lg:mb-[-320px] 2xl:mb-[-400px]">
         SMART
       </h1>
 
@@ -60,9 +60,10 @@ const Smart: FC = () => {
         SMART
       </motion.h1> */}
         <div>
+          <div className="w-full md:px-30 sm:p-[35px] bg-no-repeat bg-cover shadow-[0_0_30px_rgba(62,213,178,0.2)] border-[0.5px] bg-[rgba(0,0,0,0.1)] backdrop-blur-xs mw2 border-white/40 rounded-[15px]" style={{ backgroundImage: `url("/background/smart.png")` }}>
+          <p className="w-full text-center mb-[35px] hidden lg:block uppercase text-[36px]">Evergreen Event Campaigns</p>
           <div
-            className="sm:p-[35px] w-full md:px-30 md:grid md:grid-cols-2 md:grid-rows-2 mw2 shadow-[0_0_30px_rgba(62,213,178,0.2)] border-[0.5px] backdrop-blur-xs border-white/40 rounded-[15px] flex-col bg-[rgba(0,0,0,0.1)] bg-no-repeat bg-cover p-[25px] flex gap-5 sm:gap-[25px] md:gap-[40px] lg:gap-[50px] 2xl:gap-[70px]"
-            style={{ backgroundImage: `url("/background/smart.png")` }}
+            className=" md:grid md:grid-cols-2 md:grid-rows-2   flex-col  p-[25px] flex gap-5 sm:gap-[25px] md:gap-[40px] lg:gap-x-[77px] lg:gap-y-[35px]"
           >
             <div className="flex justify-between w-full  lg:col-span-1 text-[10px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]">
               <div className="flex flex-col justify-between h-[65px] ">
@@ -121,6 +122,7 @@ const Smart: FC = () => {
               </div>
               <ImageBox imageSrc="/mainstream/love.png" />
             </div>
+          </div>
           </div>
         </div>
       </div>

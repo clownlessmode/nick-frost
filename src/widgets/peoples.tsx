@@ -30,7 +30,7 @@ const Peoples: FC = () => {
         THIS IS NOT FOR <br />
         EVERYONE <br />
       </h1>
-      <h1 className="hidden md:block bg-gradient-to-r from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-4xl font-medium leading-none tracking-tight text-center uppercase text-[32px] sm:text-[66px] md:text-[52px] lg:text-[72px] 2xl:text-[122px] relative -z-10 mb-[-70px]">
+      <h1 className="hidden md:block bg-gradient-to-r from-[#a2a1a7] via-white to-[#a2a1a7] text-transparent bg-clip-text text-4xl font-medium leading-none tracking-tight text-center uppercase text-[32px] sm:text-[66px] md:text-[52px] lg:text-[72px] 2xl:text-[122px] relative lg:top-[18px] md:top-[8px] -z-10 mb-[-70px]">
         THIS IS NOT FOR EVERYONE <br />
       </h1>
 
@@ -60,8 +60,8 @@ const Peoples: FC = () => {
 
       {/* Десктопная версия - видима только от md и выше */}
       <div className="md:mt-14 lg:mt-13 2xl:mt-10 relative hidden md:block">
-        <div className="flex justify-center items-center gap-6 lg:gap-10 relative">
-          <PeopleCard src={"/peoples/founders.png"} text="TOP TIER CREATORS" />
+        <div className="flex justify-center items-center gap-6 lg:gap-10 relative 2xl:top-[20px] lg:top-[13px] md:top-[8px]">
+          <PeopleCard src={"/peoples/founders.png"} text="FOUNDERS" />
 
           <div className="relative">
             <PeopleCard
@@ -70,18 +70,20 @@ const Peoples: FC = () => {
             />
           </div>
 
-          <PeopleCard src={"/peoples/creators.png"} text="FOUNDERS" />
+          <PeopleCard src={"/peoples/creators.png"} text="TOP TIER CREATORS" />
         </div>
 
         {/* Изображение borderpc перемещено между картами и кнопками */}
-        <div className="flex justify-center mt-2">
-          <Image
-            className=""
-            alt="border"
-            src={"/peoples/borderpc.svg"}
-            width={600}
-            height={600}
-          />
+        <div className="flex justify-center">
+          <div className="2xl:w-[1060px] lg:w-[730px] md:w-[530px]">
+            <Image
+              className="w-full"
+              alt="border"
+              src={"/peoples/borderpc.svg"}
+              width={600}
+              height={600}
+            />
+          </div>
         </div>
 
         <div className="-top-12 bg-black z-[-1] w-1/2 left-1/2 -translate-x-1/2 blur-2xl h-[150%] absolute rounded-[50%]"></div>
