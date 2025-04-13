@@ -37,7 +37,7 @@ const ProgressButtons: FC = () => {
   }, [gradientProgress])
 
   return (
-    <div>
+    <div className="backdrop-blur-[5px] border border-transparent rounded-2xl">
       <motion.div
         style={{
           width: "100%",

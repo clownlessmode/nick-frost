@@ -319,7 +319,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
       <DialogTrigger asChild>
         <Button
           variant="secondary"
-          className="font-light h-[28px] text-[10px] sm:h-[58px] sm:text-[20px] md:h-[34px] md:text-[10px] lg:h-[40px] lg:text-[10px] 2xl:h-[74px] 2xl:text-[18px]"
+          className="font-light h-[40px] text-[16px] sm:h-[58px] sm:text-[20px] md:h-[34px] md:text-[10px] lg:h-[40px] lg:text-[10px] 2xl:h-[74px] 2xl:text-[18px]"
         >
           {triggerText}
         </Button>

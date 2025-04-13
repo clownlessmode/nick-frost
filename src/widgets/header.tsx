@@ -6,7 +6,7 @@ import React, { FC } from "react";
 
 const Header: FC = () => {
   return (
-    <header className=" left-0 px-5 fixed top-0 z-50 flex w-full justify-between items-center pt-7 max-w-[100vw] backdrop-blur-[5px]">
+    <header className=" left-0 px-5 fixed top-0 z-50 flex w-full justify-between items-center pt-7 max-w-[100vw]">
       <div className="w-[85px]">
         <Image
           alt="logotype axis"

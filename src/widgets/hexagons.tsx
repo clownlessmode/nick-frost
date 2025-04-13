@@ -1,22 +1,32 @@
 "use client"
+import { cn } from "@shared/lib/utils";
 import Image from "next/image";
 import React, { FC, useState } from "react";
 
-const ImageBox: FC<{ imageSrc: string; coloredImageSrc?: string }> = ({
+const ImageBox: FC<{ imageSrc: string; coloredImageSrc: string }> = ({
   imageSrc,
   coloredImageSrc,
 }) => {
   const [thisImage, setThisImage] = useState(imageSrc);
+  const [greyscaleClass, setGreyscaleClass] = useState("greyscale");
+
   const mobileClick = () => {
     if(typeof window != 'undefined'){
       if(window.outerWidth < 768){
-        setThisImage(coloredImageSrc !== undefined ? coloredImageSrc : imageSrc);
+        if(thisImage == coloredImageSrc){
+          setThisImage(coloredImageSrc !== undefined ? imageSrc : coloredImageSrc);
+          setGreyscaleClass("grayscale");
+        } else {
+          setThisImage(coloredImageSrc !== undefined ? coloredImageSrc : imageSrc);
+          setGreyscaleClass("grayscale-100");
+        }
       }
     }
   }
 
   return (
-    <div className="relative w-[140px] h-[173px] mt-8 overflow-hidden max-w-[140px] sm:scale-125 md:scale-125 lg:scale-175 2xl:scale-[2.5] group">
+    <div className="relative w-[140px] h-[173px] mt-8 overflow-hidden max-w-[140px] sm:scale-125 md:scale-125 lg:scale-175 2xl:scale-[2.5] group" onClick={mobileClick}
+    onTouchStart={mobileClick}>
       <svg
         width="140"
         height="161"
@@ -38,8 +48,7 @@ const ImageBox: FC<{ imageSrc: string; coloredImageSrc?: string }> = ({
           height="900"
           preserveAspectRatio="xMidYMid slice"
           clipPath="url(#hexagonMask)"
-          className="w-[140px] h-[161px] object-cover scale-100 opacity-100 transition-opacity duration-300 group-hover:opacity-0 grayscale"
-          onClick={mobileClick}
+          className={cn("w-[140px] h-[161px] object-cover scale-100 opacity-100 transition-all duration-300 grayscale group-hover:opacity-0", greyscaleClass)}
         />
 
         {/* Цветное изображение (по умолчанию скрытое) */}
@@ -49,7 +58,7 @@ const ImageBox: FC<{ imageSrc: string; coloredImageSrc?: string }> = ({
           height="900"
           preserveAspectRatio="xMidYMid slice"
           clipPath="url(#hexagonMask)"
-          className="w-[140px] h-[161px] object-cover scale-100 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className={cn("w-[140px] h-[161px] object-cover scale-100 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0", greyscaleClass)}
         />
 
         {/* Белая обводка шестиугольника */}

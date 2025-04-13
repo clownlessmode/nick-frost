@@ -10,7 +10,7 @@ const Models = () => {
         <CardV1
           banner={true}
           image="/models/nickfrost.png"
-          header="NICK FROST"
+          header="NIK FROST"
           description="40K followers on Instagram"
           className="col-span-5"
         />
@@ -54,7 +54,7 @@ const Models = () => {
           <CardV1
             banner={true}
             image="/models/nickfrost.png"
-            header="NICK FROST"
+            header="NIK FROST"
             description="40K followers on Instagram"
             className="col-span-5"
           />

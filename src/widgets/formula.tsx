@@ -17,7 +17,7 @@ const FormulaItem = ({
   index: number;
 }) => {
   return (
-    <div className="2xl:pt-[40px] 2xl:h-[517px] overflow-hidden flex flex-col justify-between bg-[linear-gradient(to_bottom,white_70%,#1C8F74_100%)] mt-[20px] px-[20px] sm:px-[40px] md:px-[2px] lg:px-[2px] pt-[20px] sm:pt-[40px] md:pt-[8px] lg:pt-[12px] rounded-[5%] md:rounded-[20px] w-full max-w-[280px] sm:max-w-[600px] md:max-w-[170px] lg:max-w-[231px] 2xl:max-w-[354px] h-[250px] sm:h-[534px] md:h-[250px] lg:h-[338px] text-black">
+    <div className="2xl:pt-[40px] 2xl:h-[517px] overflow-hidden flex flex-col justify-between bg-[linear-gradient(to_bottom,white_70%,#1C8F74_100%)] mt-[20px] px-[20px] sm:px-[40px] md:px-[2px] lg:px-[2px] pt-[20px] sm:pt-[40px] md:pt-[8px] lg:pt-[12px] rounded-[5%] md:rounded-[20px] w-full max-w-[280px] sm:max-w-[600px] md:max-w-[170px] lg:max-w-[231px] 2xl:max-w-[354px] h-[300px] sm:h-[534px] md:h-[250px] lg:h-[338px] text-black">
       <div className="flex flex-col md:items-center gap-[6px] sm:gap-[15px] md:gap-[6px] lg:gap-[12px] w-full 2xl:gap-[16px]">
         <Icon className="size-[15px] sm:size-[32px] md:size-[12px] lg:size-[15px] text-[#1C8F74] 2xl:size-[24px]" />
         <h2 className="2xl:text-[36px] md:px-[20px] w-full font-normal text-[24px] sm:text-[50px] md:text-[16px] lg:text-[24px] text-left leading-none tracking-tight">

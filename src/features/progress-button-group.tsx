@@ -52,10 +52,10 @@ const ProgressButtonsGroup: FC = () => {
   }, []);
 
   return (
-    <div className="flex items-center relative ">
+    <div className="flex items-center relative backdrop-blur-[5px]">
         <svg width="693" height="56" viewBox="0 0 693 56" fill="none" xmlns="http://www.w3.org/2000/svg">
           <foreignObject x="-8" y="-8" width="709" height="72">
-            <div xmlns="http://www.w3.org/1999/xhtml" className="style1"></div>
+            <div className="style1"></div>
           </foreignObject>
           <g data-figma-bg-blur-radius="8">
             <mask id="path-1-inside-1_1_2" fill="white">
