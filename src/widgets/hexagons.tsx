@@ -18,15 +18,14 @@ const ImageBox: FC<{ imageSrc: string; coloredImageSrc: string }> = ({
           setGreyscaleClass("grayscale");
         } else {
           setThisImage(coloredImageSrc !== undefined ? coloredImageSrc : imageSrc);
-          setGreyscaleClass("grayscale-100");
+          setGreyscaleClass("grayscale-0");
         }
       }
     }
   }
 
   return (
-    <div className="relative w-[140px] h-[173px] mt-8 overflow-hidden max-w-[140px] sm:scale-125 md:scale-125 lg:scale-175 2xl:scale-[2.5] group" onClick={mobileClick}
-    onTouchStart={mobileClick}>
+    <div className="relative w-[140px] h-[173px] mt-8 overflow-hidden max-w-[140px] sm:scale-125 md:scale-125 lg:scale-175 2xl:scale-[2.5] group" onClick={mobileClick}>
       <svg
         width="140"
         height="161"
