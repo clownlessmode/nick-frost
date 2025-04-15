@@ -31,14 +31,14 @@ const Next: FC = () => {
   return (
     <div className="relative mt-[80px] sm:mt-[150px] md:mt-[100px] lg:mt-[120px] 2xl:mt-[150px] w-full overflow-hidden">
       <motion.div
-        className="mx-auto max-w-[80vw] sm:max-w-[573px] md:max-w-[420px] lg:max-w-[480px] 2xl:max-w-[840px] relative mt-[50px]"
+        className="mx-auto max-w-[80vw] sm:max-w-[64vw] relative mt-[50px]"
         ref={ref}
         initial="hidden"
         animate={controls}
         variants={zoomVariants}
       >
         <div className="flex flex-col gap-[18px] sm:gap-[37px] md:gap-[24px] lg:gap-[0] px-[20px] py-[25px] sm:px-[42px] sm:py-[56px] md:px-[44px] md:py-[56px] lg:px-[53px] lg:py-[57px] 2xl:px-[102px] 2xl:py-[109px] border border-white/20 rounded-[12px] sm:rounded-[19px] md:rounded-[12px] lg:rounded-[14px] 2xl:rounded-[28px] backdrop-blur-md">
-          <h1 className="text-[45px] sm:text-[72px] md:text-[46px] lg:text-[55px] 2xl:text-[102px] uppercase lg:mb-[69px] text-center">
+          <h1 className="text-[45px] sm:text-[72px] md:text-[46px] lg:text-[55px] 2xl:text-[140px] uppercase lg:mb-[69px] text-center">
             what&apos;s next
           </h1>
           <div className="flex flex-col gap-[10px] sm:gap-[20px] md:gap-[12px] lg:gap-[15px] 2xl:gap-[28px] lg:mb-[69px]">

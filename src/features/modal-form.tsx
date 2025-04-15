@@ -97,15 +97,6 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
     }
   };
 
-  // Переход к предыдущему шагу
-
-  // Переход к конкретному шагу
-  const goToStep = (step: number) => {
-    if (step >= 1 && step <= totalSteps) {
-      setCurrentStep(step);
-    }
-  };
-
   // Обработчик отправки формы
   const onSubmit = (data: FormData) => {
     console.log("Form submitted:", data);
@@ -122,7 +113,6 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
           <div
             key={step}
             className="flex flex-col items-center cursor-pointer"
-            onClick={() => goToStep(step)}
           >
             <div
               className={`transition-transform w-[51px] h-[15px] sm:w-[75px] sm:h-[22px] md:w-[51px] md:h-[15px] lg:w-[75px] lg:h-[22px] 2xl:w-[121px] 2xl:h-[36px] rounded-[40px] flex items-center justify-center 
@@ -319,7 +309,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
       <DialogTrigger asChild>
         <Button
           variant="secondary"
-          className="font-light h-[40px] text-[16px] sm:h-[58px] sm:text-[20px] md:h-[34px] md:text-[10px] lg:h-[40px] lg:text-[10px] 2xl:h-[74px] 2xl:text-[18px]"
+          className="font-light h-[40px] text-[16px] sm:h-[58px] sm:text-[20px] md:h-[34px] md:text-[10px] lg:h-[40px] lg:text-[10px] 2xl:h-[74px] 2xl:text-[24px]"
         >
           {triggerText}
         </Button>
