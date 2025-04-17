@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, FC, useState } from "react";
+import React, { ChangeEvent, FC, useEffect, useRef, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -10,6 +10,12 @@ import { Button } from "@shared/ui/button";
 import { Input } from "@shared/ui/input";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { useForm } from "react-hook-form";
+import dotenv from 'dotenv';
+import {IMaskInput} from 'react-imask';
+import IMask, {InputMask} from 'imask';
+// import 'react-phone-number-input/style.css'
+
+dotenv.config();
 
 interface ModalFormProps {
   triggerText: string;
@@ -21,8 +27,9 @@ interface FormData {
   description: string;
   additionalField: string;
   option: string[];
-  phoneNumber: string,
-  email: string
+  phoneNumber: string;
+  email: string;
+  others: string;
 }
 
 type FormField = keyof FormData;
@@ -30,9 +37,14 @@ type FormField = keyof FormData;
 const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 4;
-  // const [status, setStatus] = useState<{ ok: boolean; message: string } | null>(null);
+  const [status, setStatus] = useState<{ ok: boolean; message: string } | null>(null);
+  const [defaultCountry, setDefaultCountry] = useState<string>('US');
+  const phoneInputRef = useRef<HTMLInputElement>(null);
+  const [phoneMask, setPhoneMask] = useState<InputMask<any> | null>(null);
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const [others, setOthers] = useState<boolean>(true);
 
-  // Интегрируем react-hook-form, сохраняя вашу существующую структуру
+
   const {
     register,
     handleSubmit: handleFormSubmit,
@@ -48,14 +60,72 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
       additionalField: "",
       option: [],
       phoneNumber: "",
-      email: ""
+      email: "",
+      others: "",
     },
   });
 
-  // Используем watch для получения текущих значений формы
   const formData = watch();
 
-  // Обработчик изменений для полей ввода
+  useEffect(() => {
+    // Автоматическое определение страны пользователя
+    if (typeof window !== 'undefined' && window.navigator) {
+      const userLanguage = navigator.language || 'en-US';
+      const countryCode = userLanguage.split('-')[1] || 'US';
+      setDefaultCountry(countryCode);
+      
+      // Инициализация маски для телефона
+      const maskOptions = {
+        mask: getPhoneMask(countryCode),
+      };
+      
+      const inputElement = document.getElementById('phoneNumber') as HTMLInputElement;
+      if (inputElement) {
+        const mask = IMask(inputElement, maskOptions);
+        setPhoneMask(mask);
+        
+        // Очищаем маску при размонтировании
+        return () => mask.destroy();
+      }
+    }
+  }, []);
+
+  // Функция для получения маски телефона в зависимости от страны
+  const getPhoneMask = (countryCode: string) => {
+    switch (countryCode) {
+      case 'RU': // Россия
+        return '+{7} (000) 000-00-00';
+      case 'US': // США
+        return '+1 (000) 000-0000';
+      case 'GB': // Великобритания
+        return '+44 (000) 0000-0000';
+      case 'DE': // Германия
+        return '+49 (000) 000-0000';
+      case 'FR': // Франция
+        return '+33 (0) 00 00 00 00';
+      case 'IT': // Италия
+        return '+39 (000) 000-0000';
+      case 'ES': // Испания
+        return '+34 (000) 000-000';
+      case 'CA': // Канада
+        return '+1 (000) 000-0000';
+      case 'AU': // Австралия
+        return '+61 (0) 0000-0000';
+      case 'JP': // Япония
+        return '+81 (00) 0000-0000';
+      case 'CN': // Китай
+        return '+86 (000) 000-0000';
+      case 'IN': // Индия
+        return '+91 (0000) 000-000';
+      case 'BR': // Бразилия
+        return '+55 (00) 00000-0000';
+      default:
+        return '+{000} (000) 000-0000'; // Общий формат
+    }
+  };
+
+  
+
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -63,19 +133,24 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
     setValue(id as FormField, value);
   };
 
-  // Обработчик выбора опции
+  const handlePhoneAccept = (value: string) => {
+    setValue('phoneNumber', value, { shouldValidate: true });
+  };
+
   const handleOptionSelect = (selectedOption: string) => {
     const currentOptions = watch("option");
     const updatedOptions = currentOptions.includes(selectedOption) 
       ? currentOptions.filter((opt) => opt !== selectedOption)
       : [...currentOptions, selectedOption];
 
+    if(selectedOption == 'OTHER'){
+      setOthers(!others);
+    }
+
     setValue("option", updatedOptions);
   };
 
-  // Переход к следующему шагу
   const nextStep = async () => {
-    // Проверяем валидность текущего шага перед переходом
     const fieldsToValidate: FormField[] = [];
 
     switch (currentStep) {
@@ -102,85 +177,50 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
     }
   };
 
-  // Обработчик отправки формы
-  // const onSubmit = async (data: FormData) => {
-  //   if(data.option.length != 0){
-  //     try {
-  //       const response = await fetch('/api/send-email', {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //         body: JSON.stringify(data),
-  //       });
-  
-  //       const dataFetch = await response.json();
-  
-  //       if (response.ok) {
-  //         setStatus({ ok: true, message: 'Сообщение отправлено успешно!' });
-  //       } else {
-  //         setStatus({
-  //           ok: false,
-  //           message: dataFetch.error,
-  //         });
-  //       }
-  //     } catch (error) {
-  //       setStatus({
-  //         ok: false,
-  //         message: "s",
-  //       });
-  //       console.log(error);
-  //     } finally{
-  //       console.log(status);
-  //     }
-  //   }
-  // };
   const onSubmit = async (data: FormData) => {
-    try {
-      setStatus(null);
-      
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-  
-      // Проверяем content-type перед парсингом
-      const contentType = response.headers.get('content-type');
-      if (!contentType || !contentType.includes('application/json')) {
-        const text = await response.text();
-        throw new Error(`Unexpected response: ${text.substring(0, 100)}`);
+    if(data.option.length != 0){
+      try {
+        setStatus(null);
+        
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+    
+        const contentType = response.headers.get('content-type');
+        if (!contentType?.includes('application/json')) {
+          const text = await response.text();
+          console.error('Non-JSON response:', text.substring(0, 200));
+          throw new Error('Server returned unexpected response');
+        }
+    
+        const result = await response.json();
+    
+        if (!response.ok) {
+          throw new Error(result.error || 'Request failed');
+        }
+    
+        setStatus({ ok: true, message: 'Message sent successfully!' });
+    
+      } catch (error) {
+        console.error('Submission error:', error);
+        setStatus({
+          ok: false,
+          message: error instanceof Error ? error.message : 'Submission failed',
+        });
+      } finally{
+        window.location.href="https://calendly.com/iamnikfrost/axis-discovery-call";
       }
-  
-      const result = await response.json();
-  
-      if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
-      }
-  
-      setStatus({ 
-        ok: true, 
-        message: 'Message sent successfully!' 
-      });
-  
-    } catch (error) {
-      console.error('Submission error:', error);
-      setStatus({
-        ok: false,
-        message: error instanceof Error ? error.message : 'An error occurred',
-      });
     }
   };
-  
-  // Обработчик для совместимости с вашим существующим кодом
   
   const renderStepIndicator = () => {
     return (
       <div className="flex gap-[10px] sm:gap-[12px] md:gap-[8px] lg:gap-[12px] 2xl:gap-[20px]">
-        {
-        Array.from({ length: totalSteps }, (_, i) => i + 1).map((step) => (
+        {Array.from({ length: totalSteps }, (_, i) => i + 1).map((step) => (
           <div
             key={step}
             className="flex flex-col items-center cursor-pointer"
@@ -190,8 +230,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 ${currentStep === step
                   ? "bg-[#1C8F74] text-white translate-y-[-10px]"
                   : "bg-white  text-black"
-                
-              }`}
+                }`}
             >
               <span className="text-[6px] sm:text-[12px] md:text-[6px] lg:text-[10px] 2xl:text-[16px]">
                 0{step} STEP
@@ -245,14 +284,23 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 </span>
               )}
             </div>
-            <div>
-              <Input
+            <div className="flex flex-col">
+              <IMaskInput
                 id="phoneNumber"
-                type="phone"
-                {...register("phoneNumber", { required: "Phone number is required" })}
-                onChange={handleChange}
+                mask={getPhoneMask(defaultCountry)}
+                definitions={{
+                  '0': /[0-9]/
+                }}
+                onAccept={handlePhoneAccept}
                 placeholder="PHONE NUMBER"
-                className="md:p-[24px] p-[10px] md:mb-[24px] mb-[18px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+                className="w-full md:p-[24px] p-[10px] md:mb-[24px] mb-[18px] bg-transparent border! focus-visible:outline-0! border-[#FFFFFF]! h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+                {...register("phoneNumber", { 
+                  required: "Phone number is required",
+                  validate: (value) => {
+                    const digits = value.replace(/\D/g, '');
+                    return digits.length >= 7 || "Invalid phone number";
+                  }
+                })}
               />
               {errors.phoneNumber && (
                 <span className="text-red-500 text-sm ml-[10px]">
@@ -264,7 +312,11 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
               <Input
                 id="email"
                 type="email"
-                {...register("email", { required: "Email is required" })}
+                {...register("email", { required: "Email is required",
+                  pattern: {
+                    value: emailRegex,
+                    message: "Please enter a valid email address"
+                  }})}
                 onChange={handleChange}
                 placeholder="EMAIL"
                 className="md:p-[24px] p-[10px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
@@ -331,7 +383,6 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                   },
                 })}
                 onChange={(e) => {
-                  // Разрешаем только числа и точку для десятичных
                   const value = e.target.value.replace(/[^0-9.]/g, "");
                   const dotCount = (value.match(/\./g) || []).length;
                   if (dotCount > 1) {
@@ -355,7 +406,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
         return (
           <div className="flex items-center flex-col w-full">
             <label className="md:mb-[30px] mb-[25px]  text-center uppercase text-[21px] leading-[25px] sm:text-[42px] sm:leading-[44px] md:text-[21px] md:leading-[25px] lg:text-[32px] lg:leading-[34px] 2xl:text-[50px] 2xl:leading-[54px]">
-              <span className="block max-w-[150px] sm:max-w-[300px] md:max-w-[200px] lg:max-w-[300px] 2xl:max-w-[480px] mx-auto">
+              <span className="block max-w-[100%] sm:max-w-[300px] md:max-w-[200px] lg:max-w-[300px] 2xl:max-w-[480px] mx-auto">
                 How do you currently get clients?
               </span>
             </label>
@@ -381,7 +432,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                       border-[#FFFFFF]
                       text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]
                       text-left! block
-                      md:px-[24px] p-x[10px]
+                      md:px-[24px] px-[10px]
                       ${
                         isSelected
                           ? "bg-white text-black"
@@ -398,6 +449,21 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 {errors.option.message}
               </span>
             )}
+            <div className="md:mt-[30px] mt-[10px] flex flex-col w-full" hidden={others}>
+              <Input
+                  id="others"
+                  type="text"
+                  {...register("others")}
+                  onChange={handleChange}
+                  placeholder="YOUR OPTION"
+                  className="md:p-[24px] w-full p-[10px] mb-[5px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-[#c0c0c0] placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px] pr-[70px]"
+                />
+                {errors.additionalField && (
+                  <span className="text-red-500 text-sm ml-[10px]">
+                    {errors.additionalField.message}
+                  </span>
+                )}
+            </div>
           </div>
         );
       default:
@@ -410,7 +476,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
       <DialogTrigger asChild>
         <Button
           variant="secondary"
-          className="font-light h-[40px] text-[16px] sm:h-[58px] sm:text-[20px] md:h-[34px] md:text-[10px] lg:h-[40px] lg:text-[10px] 2xl:h-[74px] 2xl:text-[24px]"
+          className="font-light h-[40px] text-[16px] sm:h-[58px] sm:text-[20px] md:h-[34px] md:text-[10px] lg:h-[40px] lg:text-[10px] 2xl:h-[74px] 2xl:text-[24px] mt-[20px]"
         >
           {triggerText}
         </Button>

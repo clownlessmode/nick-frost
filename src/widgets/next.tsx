@@ -28,6 +28,15 @@ const Next: FC = () => {
       },
     },
   };
+
+  let isHidden: boolean = true;
+
+  if(typeof window != 'undefined'){
+    if(window.outerWidth > 768){
+      isHidden = false;
+    }
+  }
+
   return (
     <div className="relative mt-[80px] sm:mt-[150px] md:mt-[100px] lg:mt-[120px] 2xl:mt-[150px] w-full overflow-hidden">
       <motion.div
@@ -43,7 +52,7 @@ const Next: FC = () => {
           </h1>
           <div className="flex flex-col gap-[10px] sm:gap-[20px] md:gap-[12px] lg:gap-[15px] 2xl:gap-[28px] lg:mb-[69px]">
             <TextInNext num={1} icon="check" text="watch the video" />
-            <TextInNext num={2} icon="check" text="choose &quot;the smart way&quot; for you" />
+            <TextInNext num={2} icon="check" text='choose "the smart way" for you' />
             <TextInNext num={3} icon="rectangle" text="book your call" />
           </div>
           {/* <Button className="w-full text-[20px] md:text-[10px] lg:text-[10px] 2xl:text-[18px]" variant={"secondary"}>
@@ -51,7 +60,7 @@ const Next: FC = () => {
           </Button> */}
           <ModalForm triggerText="FREE STRATEGY" />
           <p className="uppercase font-light text-center text-[14px] mt-[8px] sm:text-[16px] sm:mt-[16px] md:text-[10px] md:mt-[10px] lg:text-[14px] lg:mt-[30px] 2xl:text-[28px] 2xl:mt-[28px]">
-            <span className="font-medium">step 3/3 -</span> apply for a free
+            <span className="font-medium">step 3/3 -</span> apply for <br hidden={!isHidden}/> a free
             strategy call
           </p>
         </div>

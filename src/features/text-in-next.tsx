@@ -16,7 +16,7 @@ export default function TextInNext({num, icon, text}: {num: number, icon: string
               height={16}
               className="w-[24px] h-[24px] sm:w-[24px] sm:h-[24px] md:w-[16px] md:h-[16px] lg:w-[18px] lg:h-[18px] 2xl:w-[40px] 2xl:h-[40px]"
             />
-            <p className="uppercase text-[15px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[32px]">
+            <p className="uppercase text-[15px] sm:text-[20px] md:text-[10px] lg:text-[14px] 2xl:text-[32px] max-w-[200px] md:max-w-[100%]">
               {text}
             </p>
           </div>
