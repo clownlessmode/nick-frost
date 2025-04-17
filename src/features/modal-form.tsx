@@ -12,7 +12,7 @@ import { DialogTitle } from "@radix-ui/react-dialog";
 import { useForm } from "react-hook-form";
 import dotenv from 'dotenv';
 import {IMaskInput} from 'react-imask';
-import IMask, {InputMask} from 'imask';
+import IMask, {InputMask, MaskedPatternOptions} from 'imask';
 // import 'react-phone-number-input/style.css'
 
 dotenv.config();
@@ -40,10 +40,14 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
   const [status, setStatus] = useState<{ ok: boolean; message: string } | null>(null);
   const [defaultCountry, setDefaultCountry] = useState<string>('US');
   const phoneInputRef = useRef<HTMLInputElement>(null);
-  const [phoneMask, setPhoneMask] = useState<InputMask<any> | null>(null);
+  const [phoneMask, setPhoneMask] = useState<InputMask<MaskedPatternOptions> | null>(null);
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const [others, setOthers] = useState<boolean>(true);
 
+
+  console.log(status);
+  console.log(phoneInputRef);
+  console.log(phoneMask);
 
   const {
     register,

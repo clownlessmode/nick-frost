@@ -38,7 +38,7 @@ export default async function handler(
     },
   });
 
-  let isOtherReal = others != undefined && others != "";
+  const isOtherReal = others != undefined && others != "";
 
   try {
     // Формируем HTML содержимое письма
