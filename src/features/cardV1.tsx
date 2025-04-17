@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Instagram } from "lucide-react";
 import PopUpInCard from "./popUpInCard";
 import PopUpInCardReverse from "./popUpInCardReverse";
+import Lighting from "src/ui/lighting";
 
 const CardV1 = ({
     image,
@@ -22,7 +23,7 @@ const CardV1 = ({
     // Информация для каждого декоративного изображения
     const getDecorationInfo = () => {
       switch (header) {
-        case "NICK FROST":
+        case "NIK FROST":
           return [
             "Creativity",
             "Influencing Human Behavior",
@@ -48,6 +49,8 @@ const CardV1 = ({
           ];
       }
     };
+
+    const isNik: boolean = header == "NIK FROST";
   
     // const getBlockWidth = (index: number) => {
     //   switch (header) {
@@ -142,13 +145,16 @@ const CardV1 = ({
             onMouseEnter={() => setHoveredImage(1)}
             onMouseLeave={() => setHoveredImage(null)}
           >
-            <Image
-              src="/models/zzzz.svg"
-              alt="Decoration 2"
-              width={39}
-              height={39}
-              className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer"
-            />
+            {isNik ? (
+              <Image
+                src="/models/zzzz.svg"
+                alt="Decoration 2"
+                width={39}
+                height={39}
+                className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer"
+              />) : (
+                <Lighting />
+              )}
             <PopUpInCard hovImg={hoveredImage} label={decorationInfo[1]} num={1}/>
           </div>
         </div>
@@ -178,13 +184,16 @@ const CardV1 = ({
             onMouseLeave={() => setHoveredImage(null)}
           >
             <PopUpInCardReverse hovImg={hoveredImage} label={decorationInfo[3]} num={3} />
-            <Image
-              src="/models/zzzz.svg"
-              alt="Decoration 4"
-              width={39}
-              height={39}
-              className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer relative"
-            />
+            {!isNik ? (
+              <Image
+                src="/models/zzzz.svg"
+                alt="Decoration 2"
+                width={39}
+                height={39}
+                className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer"
+              />) : (
+                <Lighting />
+              )}
           </div>
         </div>
   

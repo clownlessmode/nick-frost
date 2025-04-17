@@ -214,6 +214,21 @@
   }
 }
 
+@keyframes pulseLightingOut{
+  0%{
+    transform: scale(1);
+    opacity: 100%;
+  }
+  100%{
+    transform: scale(1.2);
+    opacity: 0%;
+  }
+}
+
+.pulse-light-out{
+  animation: pulseLightingOut 1s infinite;
+}
+
 body {
   color: white;
 }
@@ -236,4 +251,8 @@ body {
 
 .gradient{
   background: radial-gradient(99.29% 554.92% at 50% 50%, rgba(10, 10, 10, 0.8) 0%, rgba(33, 130, 107, 0.8) 100%)
+}
+
+.lightingPath{
+  clip-path:url(#bgblur_0_292_4946_clip_path);
 }

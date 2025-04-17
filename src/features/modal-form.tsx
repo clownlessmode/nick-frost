@@ -21,6 +21,8 @@ interface FormData {
   description: string;
   additionalField: string;
   option: string[];
+  phoneNumber: string,
+  email: string
 }
 
 type FormField = keyof FormData;
@@ -28,6 +30,7 @@ type FormField = keyof FormData;
 const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 4;
+  // const [status, setStatus] = useState<{ ok: boolean; message: string } | null>(null);
 
   // Интегрируем react-hook-form, сохраняя вашу существующую структуру
   const {
@@ -44,6 +47,8 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
       description: "",
       additionalField: "",
       option: [],
+      phoneNumber: "",
+      email: ""
     },
   });
 
@@ -75,7 +80,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
 
     switch (currentStep) {
       case 1:
-        fieldsToValidate.push("firstName", "lastName");
+        fieldsToValidate.push("firstName", "lastName", "phoneNumber", "email");
         break;
       case 2:
         fieldsToValidate.push("description");
@@ -98,9 +103,75 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
   };
 
   // Обработчик отправки формы
-  const onSubmit = (data: FormData) => {
-    console.log("Form submitted:", data);
-    // Здесь можно добавить логику отправки формы
+  // const onSubmit = async (data: FormData) => {
+  //   if(data.option.length != 0){
+  //     try {
+  //       const response = await fetch('/api/send-email', {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify(data),
+  //       });
+  
+  //       const dataFetch = await response.json();
+  
+  //       if (response.ok) {
+  //         setStatus({ ok: true, message: 'Сообщение отправлено успешно!' });
+  //       } else {
+  //         setStatus({
+  //           ok: false,
+  //           message: dataFetch.error,
+  //         });
+  //       }
+  //     } catch (error) {
+  //       setStatus({
+  //         ok: false,
+  //         message: "s",
+  //       });
+  //       console.log(error);
+  //     } finally{
+  //       console.log(status);
+  //     }
+  //   }
+  // };
+  const onSubmit = async (data: FormData) => {
+    try {
+      setStatus(null);
+      
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      // Проверяем content-type перед парсингом
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await response.text();
+        throw new Error(`Unexpected response: ${text.substring(0, 100)}`);
+      }
+  
+      const result = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+  
+      setStatus({ 
+        ok: true, 
+        message: 'Message sent successfully!' 
+      });
+  
+    } catch (error) {
+      console.error('Submission error:', error);
+      setStatus({
+        ok: false,
+        message: error instanceof Error ? error.message : 'An error occurred',
+      });
+    }
   };
   
   // Обработчик для совместимости с вашим существующим кодом
@@ -166,11 +237,41 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 {...register("lastName", { required: "Last name is required" })}
                 onChange={handleChange}
                 placeholder="LAST NAME"
-                className="md:p-[24px] p-[10px] mb-[5px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+                className="md:p-[24px] p-[10px] md:mb-[24px] mb-[18px] mb-[5px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
               />
               {errors.lastName && (
                 <span className="text-red-500 text-sm ml-[10px]">
                   {errors.lastName.message}
+                </span>
+              )}
+            </div>
+            <div>
+              <Input
+                id="phoneNumber"
+                type="phone"
+                {...register("phoneNumber", { required: "Phone number is required" })}
+                onChange={handleChange}
+                placeholder="PHONE NUMBER"
+                className="md:p-[24px] p-[10px] md:mb-[24px] mb-[18px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+              />
+              {errors.phoneNumber && (
+                <span className="text-red-500 text-sm ml-[10px]">
+                  {errors.phoneNumber.message}
+                </span>
+              )}
+            </div>
+            <div>
+              <Input
+                id="email"
+                type="email"
+                {...register("email", { required: "Email is required" })}
+                onChange={handleChange}
+                placeholder="EMAIL"
+                className="md:p-[24px] p-[10px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+              />
+              {errors.email && (
+                <span className="text-red-500 text-sm ml-[10px]">
+                  {errors.email.message}
                 </span>
               )}
             </div>
@@ -330,7 +431,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
           </div>
 
           <div className="mt-auto">
-            {currentStep < totalSteps ? (
+            {currentStep != totalSteps ? (
               <Button
                 type="button"
                 onClick={nextStep}
