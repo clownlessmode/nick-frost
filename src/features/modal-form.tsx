@@ -13,7 +13,6 @@ import { useForm } from "react-hook-form";
 import dotenv from 'dotenv';
 import {IMaskInput} from 'react-imask';
 import IMask, {InputMask, MaskedPatternOptions} from 'imask';
-// import 'react-phone-number-input/style.css'
 
 dotenv.config();
 
@@ -44,7 +43,6 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const [others, setOthers] = useState<boolean>(true);
 
-
   console.log(status);
   console.log(phoneInputRef);
   console.log(phoneMask);
@@ -72,13 +70,36 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
   const formData = watch();
 
   useEffect(() => {
-    // Автоматическое определение страны пользователя
-    if (typeof window !== 'undefined' && window.navigator) {
-      const userLanguage = navigator.language || 'en-US';
-      const countryCode = userLanguage.split('-')[1] || 'US';
-      setDefaultCountry(countryCode);
-      
-      // Инициализация маски для телефона
+    // Функция для определения страны по IP
+    const detectCountryByIP = async () => {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        
+        if (data && data.country) {
+          setDefaultCountry(data.country);
+          initializePhoneMask(data.country);
+          console.log(data.country);
+        } else {
+          // Fallback to browser language if IP detection fails
+          const userLanguage = navigator.language || 'en-US';
+          const countryCode = userLanguage.split('-')[1] || 'US';
+          setDefaultCountry(countryCode);
+          initializePhoneMask(countryCode);
+        }
+
+      } catch (error) {
+        console.error('Error detecting country by IP:', error);
+        // Fallback to browser language if IP detection fails
+        const userLanguage = navigator.language || 'en-US';
+        const countryCode = userLanguage.split('-')[1] || 'US';
+        setDefaultCountry(countryCode);
+        initializePhoneMask(countryCode);
+      }
+    };
+
+    // Функция для инициализации маски телефона
+    const initializePhoneMask = (countryCode: string) => {
       const maskOptions = {
         mask: getPhoneMask(countryCode),
       };
@@ -91,45 +112,42 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
         // Очищаем маску при размонтировании
         return () => mask.destroy();
       }
+    };
+
+    if (typeof window !== 'undefined') {
+      detectCountryByIP();
     }
   }, []);
 
   // Функция для получения маски телефона в зависимости от страны
   const getPhoneMask = (countryCode: string) => {
-    switch (countryCode) {
-      case 'RU': // Россия
-        return '+{7} (000) 000-00-00';
-      case 'US': // США
-        return '+1 (000) 000-0000';
-      case 'GB': // Великобритания
-        return '+44 (000) 0000-0000';
-      case 'DE': // Германия
-        return '+49 (000) 000-0000';
-      case 'FR': // Франция
-        return '+33 (0) 00 00 00 00';
-      case 'IT': // Италия
-        return '+39 (000) 000-0000';
-      case 'ES': // Испания
-        return '+34 (000) 000-000';
-      case 'CA': // Канада
-        return '+1 (000) 000-0000';
-      case 'AU': // Австралия
-        return '+61 (0) 0000-0000';
-      case 'JP': // Япония
-        return '+81 (00) 0000-0000';
-      case 'CN': // Китай
-        return '+86 (000) 000-0000';
-      case 'IN': // Индия
-        return '+91 (0000) 000-000';
-      case 'BR': // Бразилия
-        return '+55 (00) 00000-0000';
-      default:
-        return '+{000} (000) 000-0000'; // Общий формат
-    }
+    const countryMasks: Record<string, string> = {
+      'RU': '+{7} (000) 000-00-00', // Россия
+      'US': '+1 (000) 000-0000', // США
+      'GB': '+44 (000) 0000-0000', // Великобритания
+      'DE': '+49 (000) 000-0000', // Германия
+      'FR': '+33 (0) 00 00 00 00', // Франция
+      'IT': '+39 (000) 000-0000', // Италия
+      'ES': '+34 (000) 000-000', // Испания
+      'CA': '+1 (000) 000-0000', // Канада
+      'AU': '+61 (0) 0000-0000', // Австралия
+      'JP': '+81 (00) 0000-0000', // Япония
+      'CN': '+86 (000) 000-0000', // Китай
+      'IN': '+91 (0000) 000-000', // Индия
+      'BR': '+55 (00) 00000-0000', // Бразилия
+      'MX': '+52 (000) 000-0000', // Мексика
+      'KR': '+82 (00) 0000-0000', // Южная Корея
+      'ID': '+62 (000) 000-000', // Индонезия
+      'TR': '+90 (000) 000-0000', // Турция
+      'SA': '+966 (0) 0000-0000', // Саудовская Аравия
+      'ZA': '+27 (00) 000-0000', // Южная Африка
+      'NG': '+234 (000) 000-0000', // Нигерия
+    };
+
+    return countryMasks[countryCode] || '+{000} (000) 000-0000'; // Общий формат для других стран
   };
 
-  
-
+  // Остальной код компонента остается без изменений...
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -253,7 +271,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
           <div className="flex flex-col">
             <label
               htmlFor="firstName"
-              className="text-center uppercase text-[21px] sm:text-[42px] md:text-[21px] lg:text-[32px] 2xl:text-[50px] font-normal md:mb-[40px] mb-[25px]"
+              className="text-center uppercase text-[21px] sm:text-[42px] md:text-[21px] lg:text-[32px] 2xl:text-[50px] font-normal md:mb-[40px] mb-[20px]"
             >
               your full name
             </label>
@@ -264,7 +282,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 {...register("firstName", { required: "First name is required" })}
                 onChange={handleChange}
                 placeholder="FIRST NAME"
-                className="md:p-[24px] p-[10px] md:mb-[24px] mb-[18px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+                className="md:p-[24px] p-[10px] md:mb-[24px] mb-[10px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
               />
               {errors.firstName && (
                 <span className="text-red-500 text-sm ml-[10px]">
@@ -280,7 +298,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 {...register("lastName", { required: "Last name is required" })}
                 onChange={handleChange}
                 placeholder="LAST NAME"
-                className="md:p-[24px] p-[10px] md:mb-[24px] mb-[18px] mb-[5px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+                className="md:p-[24px] p-[10px] md:mb-[24px] mb-[10px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
               />
               {errors.lastName && (
                 <span className="text-red-500 text-sm ml-[10px]">
@@ -297,7 +315,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 }}
                 onAccept={handlePhoneAccept}
                 placeholder="PHONE NUMBER"
-                className="w-full md:p-[24px] p-[10px] md:mb-[24px] mb-[18px] bg-transparent border! focus-visible:outline-0! border-[#FFFFFF]! h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+                className="w-full md:p-[24px] p-[10px] md:mb-[24px] mb-[10px] bg-transparent border! focus-visible:outline-0! border-[#FFFFFF]! h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
                 {...register("phoneNumber", { 
                   required: "Phone number is required",
                   validate: (value) => {
@@ -414,7 +432,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                 How do you currently get clients?
               </span>
             </label>
-            <div className="grid grid-cols-2 gap-x-[24px] gap-y-[20px] w-full">
+            <div className="grid grid-cols-2 lg:gap-x-[24px] lg:gap-y-[20px] gap-x-[10px] gap-y-[7px] w-full">
               {[
                 "COLD OUTREACH",
                 "E-MAIL MARKETING",
@@ -434,7 +452,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                       lg:h-[44px] lg:rounded-[12px] 
                       2xl:h-[72px] 2xl:rounded-[20px] 
                       border-[#FFFFFF]
-                      text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]
+                      text-[8px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px]
                       text-left! block
                       md:px-[24px] px-[10px]
                       ${
@@ -485,7 +503,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
           {triggerText}
         </Button>
       </DialogTrigger>
-      <DialogContent className="flex bg-[#1C8F74]/10 items-center justify-center flex-col max-w-[280px] h-[335px] sm:max-w-[513px] sm:h-[627px] md:max-w-[300px] md:h-[335px] lg:max-w-[431px] lg:h-[481px] 2xl:max-w-[693px] 2xl:h-[774px] border border-white/20 rounded-[12px] sm:rounded-[19px] md:rounded-[12px] lg:rounded-[14px] 2xl:rounded-[28px] backdrop-blur-md  p-4 sm:p-6 md:p-4 lg:p-6 2xl:p-8">
+      <DialogContent className="flex bg-[#1C8F74]/10 items-center justify-center flex-col max-w-[280px] h-[335px] sm:max-w-[513px] sm:h-[627px] md:max-w-[300px] md:h-[335px] lg:max-w-[431px] lg:h-[481px] 2xl:max-w-[693px] 2xl:h-[774px] border border-white/20 rounded-[12px] sm:rounded-[19px] md:rounded-[12px] lg:rounded-[14px] 2xl:rounded-[28px] backdrop-blur-md  p-4 sm:p-6 md:p-4 lg:p-6 2xl:p-8 md:[&>button]:block [&>button]:hidden">
         <DialogHeader>
           <DialogTitle className="text-[24px] sm:text-[32px] md:text-[28px] lg:text-[32px] 2xl:text-[48px] uppercase">
             {renderStepIndicator()}
