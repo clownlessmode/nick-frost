@@ -20,12 +20,11 @@ export const metadata: Metadata = {
         }
       ]
     }
-  };
-  
+};
 
 const PrivacyPolicy: FC = () => {
     return (
-        <div className="pt-[100px] pb-[40px]  antialiased bg-background md:px-[25vw] px-[20px] noise-bg overflow-x-hidden">
+        <div className="pt-[100px] pb-[40px] antialiased bg-background md:px-[25vw] px-[20px] noise-bg overflow-x-hidden">
             <AnotherHeader />
             <header className="mb-[50px]">
                 <p className="text-[24px] mb-[5px]">Privacy Policy</p>
@@ -47,25 +46,25 @@ const PrivacyPolicy: FC = () => {
                     <p>- Reach out if you request support or info</p>
                     <p>- Send useful updates or content via email (with your permission)</p>
                     <p>- Understand how to serve creators like you more effectively</p>
-                    <br/>
+                    <br />
                     <p>We do not do profiling, sell your info, or make decisions about you automatically.</p>
                 </BlockPolice>
                 <BlockPolice title="4. Who We Share It With" inSimpleTerms="It stays between us.">
-                    <p>We don’t sell, rent, or share your data with anyone else. Period.</p>
+                    <p>We don&apos;t sell, rent, or share your data with anyone else. Period.</p>
                 </BlockPolice>
-                <BlockPolice title="5. How We Store & Protect Your Data" inSimpleTerms="We keep your info safe, use it only when necessary, and you are always in control.">
-                    <p>Your information is stored securely in private, access-controlled files and is only used for the purposes you've agreed to. We do not hold on to your data any longer than needed, and you can request deletion at any time by contacting us.</p>
+                <BlockPolice title="5. How We Store &amp; Protect Your Data" inSimpleTerms="We keep your info safe, use it only when necessary, and you are always in control.">
+                    <p>Your information is stored securely in private, access-controlled files and is only used for the purposes you&apos;ve agreed to. We do not hold on to your data any longer than needed, and you can request deletion at any time by contacting us.</p>
                 </BlockPolice>
                 <BlockPolice title="6. Your Rights" inSimpleTerms="You are in control. If you want out, just say so.">
                     <p>You can:</p>
                     <p>- Ask to see what data we have</p>
                     <p>- Request that we delete your info</p>
                     <p>- Unsubscribe from emails anytime</p>
-                    <br/>
+                    <br />
                     <p>Just reach out to us via email.</p>
                 </BlockPolice>
-                <BlockPolice title="7. Cookies & Tracking" inSimpleTerms="No creepy ads or tracking here.">
-                    <p>We currently don’t use cookies or third-party tracking tools.</p>
+                <BlockPolice title="7. Cookies &amp; Tracking" inSimpleTerms="No creepy ads or tracking here.">
+                    <p>We currently don&apos;t use cookies or third-party tracking tools.</p>
                 </BlockPolice>
                 <BlockPolice title="8. Legal Stuff" inSimpleTerms="We will stay compliant if anything changes — and keep you updated.">
                     <p>We follow U.S. privacy standards. If we begin serving users in other regions, we will update this policy to comply with laws like the GDPR (EU) or CCPA (California).</p>
@@ -83,4 +82,4 @@ const PrivacyPolicy: FC = () => {
     )
 }
 
-export default PrivacyPolicy
+export default PrivacyPolicy;
