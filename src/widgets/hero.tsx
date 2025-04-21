@@ -3,7 +3,7 @@ import React, { FC } from "react";
 
 const Hero: FC = () => {
   return (
-    <div className="mw z-30 relative gap-5 md:gap-2 lg:gap-3 2xl:gap-6 flex flex-col justify-center mx-auto items-center">
+    <div className="mw relative gap-5 md:gap-2 lg:gap-3 2xl:gap-6 flex flex-col justify-center mx-auto items-center -z-20">
     <h1 className="bg-gradient-to-r tracking-[-2px] from-[#a2a1a7] via-white to-[#a2a1a7] w-full text-transparent bg-clip-text text-[36px] sm:text-[80px] md:text-[52px] lg:text-[72px] 2xl:text-[102px] font-semibold leading-none    text-center uppercase">
       <span className="block md:hidden">
         SCALE YOUR HIGH&#8209;TICKET OFFER 24/7
@@ -18,7 +18,7 @@ const Hero: FC = () => {
       We Build and Install Proprietary Evergreen Event <br />
       Campaigns That Sell for You on Autopilot
     </h2>
-    <div className="absolute top-[150px] inset-0 z-[-1] shrink-0 blur-[60px] opacity-80 sm:overflow-hidden">
+    <div className="absolute top-[400px] bottom-[-400px] inset-0 -z-20 shrink-0 blur-[60px] opacity-80 overflow-hidden w-full">
       <Image
         alt="hero-splash"
         src={"/background/hero-splash.svg"}

@@ -1,10 +1,10 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from 'next/image';
 import { Instagram } from "lucide-react";
 import PopUpInCard from "./popUpInCard";
 import PopUpInCardReverse from "./popUpInCardReverse";
-import Lighting from "src/ui/lighting";
+import Lighiting from "src/ui/lighiting";
 
 const CardV1 = ({
     image,
@@ -19,6 +19,21 @@ const CardV1 = ({
     className: string;
   }) => {
     const [hoveredImage, setHoveredImage] = useState<number | null>(null);
+
+    useEffect(() => {
+      if(header === "NIK FROST"){
+        setHoveredImage(1);
+      }
+    }, [header]);
+
+    //Переключение по клику
+    const changeInfo = (index: number): void => {
+      if(hoveredImage != index){
+        setHoveredImage(index);
+      } else{
+        setHoveredImage(null);
+      }
+    }
   
     // Информация для каждого декоративного изображения
     const getDecorationInfo = () => {
@@ -49,8 +64,6 @@ const CardV1 = ({
           ];
       }
     };
-
-    const isNik: boolean = header == "NIK FROST";
   
     // const getBlockWidth = (index: number) => {
     //   switch (header) {
@@ -125,16 +138,16 @@ const CardV1 = ({
         <div className="absolute left-[31px] sm:left-[62px] top-[25px] sm:top-[50px] md:left-[31px] md:top-[25px] lg:left-[20px] lg:top-[64px] 2xl:left-[30px] 2xl:top-[80px] z-10">
           <div
             className="relative"
-            onMouseEnter={() => setHoveredImage(0)}
-            onMouseLeave={() => setHoveredImage(null)}
+            onClick={() => changeInfo(0)}
           >
-            <Image
+            {/* <Image
               src="/models/zzzz.svg"
               alt="Decoration 1"
               width={39}
               height={39}
               className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer"
-            />
+            /> */}
+            <Lighiting num={0} activeImg={hoveredImage} />
             <PopUpInCard hovImg={hoveredImage} label={decorationInfo[0]}  num={0}/>
           </div>
         </div>
@@ -142,19 +155,9 @@ const CardV1 = ({
         <div className="absolute left-[11px] top-[93px] sm:left-[22px] sm:top-[186px] md:left-[11px] md:top-[93px] lg:left-[20px] lg:top-[128px] 2xl:left-[30px] 2xl:top-[160px] z-10">
           <div
             className="relative"
-            onMouseEnter={() => setHoveredImage(1)}
-            onMouseLeave={() => setHoveredImage(null)}
+            onClick={() => changeInfo(1)}
           >
-            {isNik ? (
-              <Image
-                src="/models/zzzz.svg"
-                alt="Decoration 2"
-                width={39}
-                height={39}
-                className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer"
-              />) : (
-                <Lighting />
-              )}
+            <Lighiting num={1} activeImg={hoveredImage} />
             <PopUpInCard hovImg={hoveredImage} label={decorationInfo[1]} num={1}/>
           </div>
         </div>
@@ -162,16 +165,9 @@ const CardV1 = ({
         <div className="absolute left-[63px] top-[174px] sm:left-[126px] sm:top-[348px] md:left-[63px] md:top-[174px] lg:left-[30px] lg:top-[208px] 2xl:left-[40px] 2xl:top-[240px] z-10">
           <div
             className="relative"
-            onMouseEnter={() => setHoveredImage(2)}
-            onMouseLeave={() => setHoveredImage(null)}
+            onClick={() => changeInfo(2)}
           >
-            <Image
-              src="/models/zzzz.svg"
-              alt="Decoration 3"
-              width={39}
-              height={39}
-              className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer"
-            />
+            <Lighiting num={2} activeImg={hoveredImage} />
             <PopUpInCard hovImg={hoveredImage} label={decorationInfo[2]} num={2}/>
           </div>
         </div>
@@ -180,20 +176,10 @@ const CardV1 = ({
         <div className="absolute right-[21px] sm:right-[42px] sm:top-[76px] top-[38px] md:right-[21px] md:top-[76px] lg:right-[30px] lg:top-[108px] 2xl:right-[40px] 2xl:top-[140px] z-10">
           <div
             className="relative"
-            onMouseEnter={() => setHoveredImage(3)}
-            onMouseLeave={() => setHoveredImage(null)}
+            onClick={() => changeInfo(3)}
           >
             <PopUpInCardReverse hovImg={hoveredImage} label={decorationInfo[3]} num={3} />
-            {!isNik ? (
-              <Image
-                src="/models/zzzz.svg"
-                alt="Decoration 2"
-                width={39}
-                height={39}
-                className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer"
-              />) : (
-                <Lighting />
-              )}
+            <Lighiting num={3} activeImg={hoveredImage} />
           </div>
         </div>
   
@@ -201,17 +187,10 @@ const CardV1 = ({
         <div className="absolute right-[16px] sm:right-[32px] sm:top-[286px] top-[143px] md:right-[16px] md:top-[143px] lg:right-[15px] lg:top-[178px] 2xl:right-[20px] 2xl:top-[210px] z-10">
           <div
             className="relative"
-            onMouseEnter={() => setHoveredImage(4)}
-            onMouseLeave={() => setHoveredImage(null)}
+            onClick={() => changeInfo(4)}
           >
             <PopUpInCardReverse hovImg={hoveredImage} label={decorationInfo[4]} num={4} />
-            <Image
-              src="/models/zzzz.svg"
-              alt="Decoration 5"
-              width={39}
-              height={39}
-              className="size-[39px] sm:size-[82px] md:size-[39px] lg:size-[52px] object-contain cursor-pointer"
-            />
+            <Lighiting num={4} activeImg={hoveredImage} />
           </div>
         </div>
       </div>

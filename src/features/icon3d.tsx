@@ -4,22 +4,18 @@ const Icon3d = ({
   src,
   className,
   index,
-  onMouseEnter,
-  onMouseLeave,
-  onClick
+  onClick,
+  isActive
 }: {
   src: string;
   className?: string;
   index: number;
-  onMouseEnter: (index: number) => void;
-  onMouseLeave: () => void;
   onClick: (index: number) => void;
+  isActive: boolean;
 }) => {
   return (
-    <a
-      className={`rounded-[11px] md:w-fit border-[0.5px] border-white bg-transparent size-full grayscale hover:grayscale-0 active:grayscale-0 transition-all duration-300 block ${className}`}
-      onMouseEnter={() => onMouseEnter(index)}
-      onMouseLeave={() => onMouseLeave()}
+    <div
+      className={`rounded-[11px] md:w-fit border-[0.5px] border-white bg-transparent size-full transition-all duration-300 grayscale ${className} ${isActive ? 'grayscale-0' : ''}`}
       onClick={() => onClick(index)}
     >
       <Image
@@ -29,7 +25,7 @@ const Icon3d = ({
         alt="icon 3d"
         src={src}
       />
-    </a>
+    </div>
   );
 };
 

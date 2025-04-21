@@ -3,6 +3,7 @@ import { Modal, ModalContent, useDisclosure } from "@heroui/modal";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { Button } from "@shared/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 import React, { FC } from "react";
 
 const Video: FC = () => {
@@ -35,6 +36,14 @@ const Video: FC = () => {
           <source src="/path/to/your/video.mp4" type="video/mp4" />
           Ваш браузер не поддерживает видео тег.
         </video>
+        <div className="2xl:w-[871px] lg:w-[560px] md:w-[412px] w-[280px]
+                        2xl:h-[476px] lg:h-[360px] md:h-[217px] h-[160px]
+                        bg-[#206F5D] 
+                        absolute 
+                        -z-10
+                        2xl:top-0 lg:top-[-5px] md:top-[10px] top-0
+                        md:blur-[60px] blur-[5px] 
+                        md:rounded-[40px] rounded-[20px]"></div>
         <Image
             alt="button-play"
             src={'/play.svg'}
@@ -53,8 +62,10 @@ const Video: FC = () => {
           </Button>
         </div>
         <div className="absolute w-full flex justify-center sm:bottom-1 md:bottom-4 lg:bottom-6 2xl:bottom-[10px]">
-          <Button onClick={onOpen} className="hover:cursor-pointer uppercase bg-white text-foreground font-light shadow-[0_0_50px_rgba(255,255,255,0.3)] 2xl:px-[36px] 2xl:py-[28px] text-[9px] px-[19px] py-[15px] sm:p-5 md:px-[19px] md:py-[15px] lg:px-[25px] lg:py-[20px] sm:text-[16px] md:text-[9px] lg:text-[13px] 2xl:text-[18px]">
-            Apply for event
+          <Button className="hover:cursor-pointer uppercase bg-white text-foreground font-light shadow-[0_0_50px_rgba(255,255,255,0.3)] 2xl:px-[36px] 2xl:py-[28px] text-[9px] px-[19px] py-[15px] sm:p-5 md:px-[19px] md:py-[15px] lg:px-[25px] lg:py-[20px] sm:text-[16px] md:text-[9px] lg:text-[13px] 2xl:text-[18px]">
+          <Link href={"#next"}>
+              apply for event
+          </Link>
           </Button>
         </div>
         <div className="blur-[60px] absolute z-[-1] bottom-0 right-1/2 translate-x-1/2 translate-y-1/2">

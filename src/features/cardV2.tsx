@@ -1,6 +1,7 @@
+"use client"
 import { cn } from "@shared/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Icon3d from "./icon3d";
 import Image from "next/image";
 
@@ -21,7 +22,13 @@ const CardV2 = ({
   }) => {
     const [hoveredIcon, setHoveredIcon] = useState<number | null>(null);
     const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-    
+
+
+    useEffect(() => {
+      if(header == "KATE SHUMSKAYA"){
+        setHoveredIcon(2);
+      }
+    }, [header])
     // Функция для определения информации на основе header и индекса иконки
     const getIconInfo = (index: number) => {
       if (header === "KATE SHUMSKAYA") {
@@ -92,7 +99,11 @@ const CardV2 = ({
 
     const changeIconAndText = (index: number) => {
       setTextInnerBlock(getIconInfo(index));
-      setHoveredIcon(index);
+      if(hoveredIcon == index){
+        setHoveredIcon(null);
+      } else {
+        setHoveredIcon(index);
+      }
     }
   
     return (
@@ -122,9 +133,8 @@ const CardV2 = ({
                   src={item}
                   className={cn(index % 2 !== 0 && "md:ml-auto")}
                   index={index}
-                  onMouseEnter={(idx) => setHoveredIcon(idx)}
-                  onMouseLeave={() => setHoveredIcon(null)}
                   onClick={(idx) => changeIconAndText(idx)}
+                  isActive={hoveredIcon === index}
                 />
   
                 {!isMobile && (

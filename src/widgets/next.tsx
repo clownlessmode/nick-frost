@@ -38,7 +38,7 @@ const Next: FC = () => {
   }
 
   return (
-    <div className="relative mt-[80px] sm:mt-[150px] md:mt-[100px] lg:mt-[120px] 2xl:mt-[150px] w-full overflow-hidden">
+    <div className="relative mt-[80px] sm:mt-[150px] md:mt-[100px] lg:mt-[120px] 2xl:mt-[150px] w-full overflow-hidden" id="next">
       <motion.div
         className="mx-auto max-w-[80vw] sm:max-w-[64vw] relative mt-[50px]"
         ref={ref}

@@ -19,7 +19,7 @@ const Models = () => {
           image="/models/katee.png"
           header="KATE SHUMSKAYA"
           description="@mimisskate"
-          back="90 M"
+          back="900M"
           src={[
             "/models/3d/globe.webp",
             "/models/3d/coin.webp",
@@ -63,7 +63,7 @@ const Models = () => {
             image="/models/katee.png"
             header="KATE SHUMSKAYA"
             description="@mimisskate"
-            back="90 M"
+            back="900M"
             src={[
               "/models/3d/globe.webp",
               "/models/3d/coin.webp",

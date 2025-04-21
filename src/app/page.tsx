@@ -1,8 +1,6 @@
-import HomePage from "@pages/home";
-import React, { FC } from "react";
+import HomePage from '@pages/home'
+import React from 'react'
 
-const Page: FC = () => {
-  return <HomePage />;
-};
-
-export default Page;
+export default function page() {
+    return <HomePage />
+}
