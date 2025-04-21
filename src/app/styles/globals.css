@@ -226,7 +226,7 @@
 }
 
 .pulse-light-out{
-  animation: pulseLightingOut 1s infinite;
+  animation: pulseLightingOut 2s infinite;
 }
 
 body {

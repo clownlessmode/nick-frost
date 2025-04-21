@@ -165,7 +165,7 @@ const CardV2 = ({
           ) : (
             <div className="flex items-center mt-1 gap-1 text-center">
               <p className="text-transparent text-xs sm:text-[16px] md:text-[10px] lg:text-[18px]">
-                {description} fjnjs
+                {description}
               </p>
             </div>
           )}

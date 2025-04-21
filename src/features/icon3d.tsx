@@ -16,8 +16,8 @@ const Icon3d = ({
   onClick: (index: number) => void;
 }) => {
   return (
-    <div
-      className={`rounded-[11px] md:w-fit border-[0.5px] border-white bg-transparent size-full grayscale hover:grayscale-0 transition-all duration-300 ${className}`}
+    <a
+      className={`rounded-[11px] md:w-fit border-[0.5px] border-white bg-transparent size-full grayscale hover:grayscale-0 active:grayscale-0 transition-all duration-300 block ${className}`}
       onMouseEnter={() => onMouseEnter(index)}
       onMouseLeave={() => onMouseLeave()}
       onClick={() => onClick(index)}
@@ -29,7 +29,7 @@ const Icon3d = ({
         alt="icon 3d"
         src={src}
       />
-    </div>
+    </a>
   );
 };
 

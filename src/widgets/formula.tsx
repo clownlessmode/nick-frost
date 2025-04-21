@@ -72,7 +72,7 @@ const Formula = () => {
           icon={Settings}
           heading={
             <>
-              <span className="font-bold text-[#1C8F74]">T</span>RAFFUC{" "}
+              <span className="font-bold text-[#1C8F74]">T</span>RAFFIC{" "}
               <span className="font-bold text-[#1C8F74]">G</span>ENERATION
             </>
           }
