@@ -12,11 +12,21 @@ import Formula from "@widgets/formula";
 import Next from "@widgets/next";
 import Footer from "@widgets/footer";
 import Headmainstream from "@widgets/headmainstream";
+import Image from 'next/image';
 
 const HomePage: FC = () => {
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="w-full">
       <Header />
+      <div className="absolute top-0 left-0 w-[100vw]">
+          <Image
+            alt="hero-splash"
+            src={"/background/vidVec.svg"}
+            width={1050}
+            height={1000}
+            className="w-full h-full "
+          />
+        </div>
       <Hero />
       <Video />
       <Peoples />

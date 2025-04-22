@@ -36,14 +36,15 @@ const Video: FC = () => {
           <source src="/path/to/your/video.mp4" type="video/mp4" />
           Ваш браузер не поддерживает видео тег.
         </video>
-        <div className="2xl:w-[871px] lg:w-[560px] md:w-[412px] w-[280px]
-                        2xl:h-[476px] lg:h-[360px] md:h-[217px] h-[160px]
+        <div className="2xl:w-[820px] lg:w-[560px] md:w-[412px] w-[280px]
+                        2xl:h-[455px] lg:h-[360px] md:h-[217px] h-[160px]
                         bg-[#206F5D] 
                         absolute 
                         -z-10
                         2xl:top-0 lg:top-[-5px] md:top-[10px] top-0
-                        md:blur-[60px] blur-[5px] 
-                        md:rounded-[40px] rounded-[20px]"></div>
+                        md:blur-[40px] blur-[5px] 
+                        md:rounded-[40px] rounded-[20px]
+                        opacity-[40%]"/>
         <Image
             alt="button-play"
             src={'/play.svg'}
