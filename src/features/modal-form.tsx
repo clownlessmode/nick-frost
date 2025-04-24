@@ -250,7 +250,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
             <div
               className={`transition-transform w-[51px] h-[15px] sm:w-[75px] sm:h-[22px] md:w-[51px] md:h-[15px] lg:w-[75px] lg:h-[22px] 2xl:w-[121px] 2xl:h-[36px] rounded-[40px] flex items-center justify-center 
                 ${currentStep === step
-                  ? "bg-[#1C8F74] text-white translate-y-[-10px]"
+                  ? "bg-[#1C8F74] text-white translate-y-[-3px] md:translate-y-[-10px]"
                   : "bg-white  text-black"
                 }`}
             >

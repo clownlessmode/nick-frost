@@ -59,7 +59,7 @@ const Formula = () => {
         className="w-[200vw] h-[657px] absolute top-0 z-10"
       />
 
-      <div className="flex justify-center items-center mb-[20px] mx-auto mt-[34px] sm:mt-[75px] md:mt-[30px] lg:mt-[40px] 2xl:mt-[56px] p-[20px] sm:p-[42px] md:p-[55px] lg:p-[75px] 2xl:p-[115px] border-[0.5px] border-white/40 rounded-[17px] lg:rounded-[35px] 2xl:rounded-[70px] w-full max-w-[280px] sm:max-w-[600px] md:max-w-[728px] lg:max-w-[984px] 2xl:max-w-[1496px] text-[24px] sm:text-[50px] md:text-[52px] lg:text-[76px] 2xl:text-[115px] text-nowrap">
+      <div className="flex justify-center items-center mb-[20px] mx-auto mt-[34px] sm:mt-[75px] md:mt-[30px] lg:mt-[40px] 2xl:mt-[56px] p-[20px] sm:p-[42px] md:p-[55px] lg:p-[75px] 2xl:p-[115px] border border-white/40 rounded-[17px] lg:rounded-[35px] 2xl:rounded-[70px] w-full max-w-[280px] sm:max-w-[600px] md:max-w-[728px] lg:max-w-[984px] 2xl:max-w-[1496px] text-[24px] sm:text-[50px] md:text-[52px] lg:text-[76px] 2xl:text-[115px] text-nowrap">
         PLF = (<span className="text-[#1C8F74]">TG</span> +{" "}
         <span className="text-[#1C8F74]">EE</span>) × (
         <span className="text-[#1C8F74]">EP</span> +{" "}

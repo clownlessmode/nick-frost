@@ -28,6 +28,10 @@ const CardV2 = ({
       if(header == "KATE SHUMSKAYA"){
         setHoveredIcon(2);
       }
+
+      if(typeof window !== "undefined" && window.outerWidth < 768){
+        setHoveredIcon(header !== "KATE SHUMSKAYA" ? 0 : 2);
+      }
     }, [header])
     // Функция для определения информации на основе header и индекса иконки
     const getIconInfo = (index: number) => {
