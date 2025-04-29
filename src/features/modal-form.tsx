@@ -29,6 +29,7 @@ interface FormData {
   phoneNumber: string;
   email: string;
   others: string;
+  instagram: string;
 }
 
 type FormField = keyof FormData;
@@ -42,6 +43,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
   const [phoneMask, setPhoneMask] = useState<InputMask<MaskedPatternOptions> | null>(null);
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const [others, setOthers] = useState<boolean>(true);
+  let isSubmitForm = false;
 
   console.log(status);
   console.log(phoneInputRef);
@@ -64,6 +66,7 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
       phoneNumber: "",
       email: "",
       others: "",
+      instagram: "",
     },
   });
 
@@ -200,7 +203,8 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
   };
 
   const onSubmit = async (data: FormData) => {
-    if(data.option.length != 0){
+    if(data.option.length != 0 && !isSubmitForm){
+      isSubmitForm = true;
       try {
         setStatus(null);
         
@@ -341,11 +345,26 @@ const ModalForm: FC<ModalFormProps> = ({ triggerText }) => {
                   }})}
                 onChange={handleChange}
                 placeholder="EMAIL"
-                className="md:p-[24px] p-[10px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+                className="md:p-[24px] p-[10px] md:mb-[24px] mb-[10px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
               />
               {errors.email && (
                 <span className="text-red-500 text-sm ml-[10px]">
                   {errors.email.message}
+                </span>
+              )}
+            </div>
+            <div>
+              <Input
+                id="instagram"
+                type="instagram"
+                {...register("instagram", { required: "instagram is required",})}
+                onChange={handleChange}
+                placeholder="INSTAGRAM USERNAME"
+                className="md:p-[24px] p-[10px] md:mb-[24px] mb-[10px] bg-transparent border-[#FFFFFF] h-[32px] rounded-[8px] sm:h-[48px] sm:rounded-[12px] md:h-[32px] md:rounded-[8px] lg:h-[44px] lg:rounded-[12px] 2xl:h-[72px] 2xl:rounded-[20px] text-[10px] sm:text-[16px] md:text-[10px] lg:text-[14px] 2xl:text-[22px] placeholder:text-white placeholder:text-[10px] sm:placeholder:text-[16px] md:placeholder:text-[10px] lg:placeholder:text-[14px] 2xl:placeholder:text-[22px]"
+              />
+              {errors.instagram && (
+                <span className="text-red-500 text-sm ml-[10px]">
+                  {errors.instagram.message}
                 </span>
               )}
             </div>

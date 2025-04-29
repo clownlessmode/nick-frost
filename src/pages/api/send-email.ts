@@ -14,6 +14,7 @@ interface EmailRequest extends NextApiRequest {
     email: string;
     phoneNumber: string;
     others: string;
+    instagram: string;
   };
 }
 
@@ -27,7 +28,7 @@ export default async function handler(
   res: NextApiResponse<EmailResponse>
 ) {
 
-  const { firstName, lastName, description, additionalField, option, email, phoneNumber, others } = req.body;
+  const { firstName, lastName, description, additionalField, option, email, phoneNumber, others, instagram } = req.body;
 
   // Создаем транспорт для отправки email
   const transporter = nodemailer.createTransport({
@@ -46,6 +47,7 @@ export default async function handler(
       <h2>New application from ${firstName} ${lastName}</h2>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Phone:</strong> ${phoneNumber}</p>
+      <p><strong>Instagram:</strong> @${instagram}</p>
       <p><strong>Clients through:</strong></p>
       <ul>
           ${option.map(type => type != "OTHER" ?  `<li>${type}</li>` : ``).join('')}
@@ -65,6 +67,7 @@ export default async function handler(
         Name: ${firstName} ${lastName}
         Email: ${email}
         Phone: ${phoneNumber}
+        Instagram: @${instagram}
         Clients through: ${option.map(type => ` - ${type}`).join('\n')}
         ${isOtherReal && (`Others client through:${others}`)}
         Budget: ${additionalField}$
